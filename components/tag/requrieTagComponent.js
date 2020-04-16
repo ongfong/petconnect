@@ -8,19 +8,27 @@ const RequireTagComponent = () => {
         email: '',
         houseNumber: '',
         village: '',
+        road: '',
+        alley: '',
+        district: '',
+        zone: '',
+        province: '',
+        postalCode:'',
         error: '',
         loading: false,
         message: '',
         showForm: true
     });
 
-    const { name, email, houseNumber, village,  error, loading, message, showForm } = values;
+    const { name, email, houseNumber, village, road, alley, district, zone, 
+        province, postalCode, error, loading, message, showForm } = values;
 
     const handleSubmit = e => {
         e.preventDefault();
         // console.table({ name, email, password, error, loading, message, showForm });
         setValues({ ...values, loading: true, error: false });
-        const tag = { name, email, houseNumber, village };
+        const tag = { name, email, houseNumber, village, road, alley, district, zone, 
+            province, postalCode };
 
         requiretag(tag).then(data => {
             if (data.error) {
@@ -32,6 +40,12 @@ const RequireTagComponent = () => {
                     email: '',
                     houseNumber: '',
                     village: '',
+                    road: '',
+                    alley: '',
+                    district: '',
+                    zone: '',
+                    province: '',
+                    postalCode:'',
                     error: '',
                     loading: false,
                     message: data.message,
@@ -89,6 +103,52 @@ const RequireTagComponent = () => {
                         type="text"
                         className="form-control"
                         placeholder="Type your village"
+                    />
+                </div>
+
+                <div className="form-group">
+                    <input
+                        value={road}
+                        onChange={handleChange('road')}
+                        type="text"
+                        className="form-control"
+                        placeholder="Type your road"
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        value={district}
+                        onChange={handleChange('district')}
+                        type="text"
+                        className="form-control"
+                        placeholder="Type your district"
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        value={zone}
+                        onChange={handleChange('zone')}
+                        type="text"
+                        className="form-control"
+                        placeholder="Type your zone"
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        value={province}
+                        onChange={handleChange('province')}
+                        type="text"
+                        className="form-control"
+                        placeholder="Type your province"
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        value={postalCode}
+                        onChange={handleChange('postalCode')}
+                        type="text"
+                        className="form-control"
+                        placeholder="Type your postalCode"
                     />
                 </div>
 
