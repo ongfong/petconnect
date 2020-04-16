@@ -2,8 +2,8 @@ import fetch from 'isomorphic-fetch';
 import cookie from 'js-cookie';
 import { API } from '../config';
 
-export const requestTag = tag => {
-    return fetch(`${API}/requesttag`, {
+export const requiretag = tag => {
+    return fetch(`${API}/requiretag`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
