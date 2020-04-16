@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+
 import Router from 'next/router';
 import { listLostPets } from '../../actions/pet';
 import moment from 'moment';
+import { API } from '../../config';
 
 const LostListComponent = () => {
     const [pets, setPets] = useState([]);
@@ -25,9 +27,16 @@ const LostListComponent = () => {
         return pets.map((pet, i) => {
             return (
                 <div key={i} className="pb-5">
-                    <h3>{pet.id}</h3>
+                    <h3>ID: {pet.id}</h3>
                     <p className="mark">
-                        Post by {pet.postedBy.name} | Published on {moment(pet.updatedAt).fromNow()}
+                    <section>
+                    <img className="img img-fluid"
+                        style={{ maxHeight: '150px', width: 'auto' }}
+                        src={`${API}/pets/photo/${pet.id}`}
+                        alt={pet.name}/>
+                    </section>
+                    <p>Category: {pet.categories[0].name}</p>
+                    Post by {pet.postedBy.name} | Lost on {moment(pet.updatedAt).fromNow()}
                     </p>
                 </div>
             );
