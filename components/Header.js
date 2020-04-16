@@ -46,7 +46,7 @@ const Header = () => {
 
               {isAuth() && isAuth().role === 0 && (
               <NavItem >
-                <Link href = "/tag/requiretag">
+                <Link href = "/tag/requesttag">
                   <NavLink className="btn btn-primary text-light" style={{ cursor: 'pointer' }} >Request for tag</NavLink>
                 </Link>
               </NavItem>
