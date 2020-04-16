@@ -36,6 +36,7 @@ const LostListComponent = () => {
                         alt={pet.name}/>
                     </section>
                     <p>Category: {pet.categories[0].name}</p>
+                    <p>Name: {pet.name}</p>
                     Post by {pet.postedBy.name} | Lost on {moment(pet.updatedAt).fromNow()}
                     </p>
                 </div>
