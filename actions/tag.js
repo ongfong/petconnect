@@ -3,7 +3,7 @@ import cookie from 'js-cookie';
 import { API } from '../config';
 
 export const requestTag = tag => {
-    return fetch(`${API}/requestTag`, {
+    return fetch(`${API}/requesttag`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
