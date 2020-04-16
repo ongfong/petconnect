@@ -6,20 +6,20 @@ const RequireTagComponent = () => {
     const [values, setValues] = useState({
         name: '',
         email: '',
-        address: '',
+        houseNumber: '',
         error: '',
         loading: false,
         message: '',
         showForm: true
     });
 
-    const { name, email, address, error, loading, message, showForm } = values;
+    const { name, email, houseNumber, error, loading, message, showForm } = values;
 
     const handleSubmit = e => {
         e.preventDefault();
         // console.table({ name, email, password, error, loading, message, showForm });
         setValues({ ...values, loading: true, error: false });
-        const tag = { name, email, address };
+        const tag = { name, email, houseNumber };
 
         requiretag(tag).then(data => {
             if (data.error) {
@@ -29,7 +29,7 @@ const RequireTagComponent = () => {
                     ...values,
                     name: '',
                     email: '',
-                    address: '',
+                    houseNumber: '',
                     error: '',
                     loading: false,
                     message: data.message,
@@ -72,16 +72,16 @@ const RequireTagComponent = () => {
 
                 <div className="form-group">
                     <input
-                        value={address}
-                        onChange={handleChange('address')}
+                        value={houseNumber}
+                        onChange={handleChange('houseNumber')}
                         type="text"
                         className="form-control"
-                        placeholder="Type your address"
+                        placeholder="Type your House number"
                     />
                 </div>
 
                 <div>
-                    <button className="btn btn-primary">Require Tag</button>
+                    <button className="btn btn-primary">Request Tag</button>
                 </div>
             </form>
         );
