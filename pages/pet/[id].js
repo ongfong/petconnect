@@ -107,8 +107,10 @@ const ProfilePetUpdate = ({ pet, router }) => {
                 <input onChange={handleChange('weight')} type="text" value={weight} className="form-control" />
             </div>
             <div className="form-group">
-                <label className="text-muted">Role</label>
-                <input onChange={handleChange('role')} type="text" value={role} className="form-control" />
+                <select value={role} onChange={handleChange('role')}>
+                        <option value="1">public</option>
+                        <option value="0">private</option>
+                </select>
             </div>
             <div>
                 <button type="submit" className="btn btn-primary">
