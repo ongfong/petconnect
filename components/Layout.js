@@ -1,9 +1,9 @@
 import Header from '../components/Header'
-const Layout = ({ children }) => {
+const Layout = (props ) => {
     return(
         <React.Fragment>
-            <Header></Header>
-            { children }
+            <Header />
+                { props.children }
         </React.Fragment>
     );
 };

@@ -79,32 +79,38 @@ const ListPets = ({ pets, query }) => {
             findPet(id);
         }
     };
+    const style = {
+        padding: '16px',
+        border: '1px solid #eee',
+        boxShadow: '0 2px 3px #ccc',
+        margin: '10px',
+        boxSizing: 'border-box',
+        backgroundColor: '#E6EAEC'
+    }
 
     const showAllPets = () => {
         return pets.map((pet, i) => {
             return (
-                <article key={i}>
+                <div style={style}>
+                    <article key={i}>
                     <div className="lead pb-4">
                         <section>
-                            <p className="mark ml-1 pt-2 pb-2">
-                                The owner is {pet.postedBy.name} | Published {moment(pet.updatedAt).fromNow()}
-                            </p>
+                            <p>The owner is {pet.postedBy.name} | Published {moment(pet.updatedAt).fromNow()}</p>
                         </section>
-
                         <div className="row">
                             <div className="col-md-4">
                                 <section>
                                     <img
                                         className="img img-fluid"
-                                        style={{ maxHeight: '150px', width: 'auto' }}
+                                        style={{ maxHeight: '200px', width: 'auto' }}
                                         src={`${API}/pets/photo/${pet.id}`}
                                         alt={pet.name}/>
                                 </section>
                             </div>
                             <div className="col-md-8">
                                 <section>
-                                    <div className="pb-3">ID: {pet.id}</div>
-                                    <div className="pb-3">Name: {pet.name}</div>
+                                    <div className="pb-3">ID: <strong>{pet.id}</strong></div>
+                                    <div className="pb-3">Name: <strong>{pet.name}</strong></div>
                                     <Link href={`/pet/${pet.id}`}>
                                         <a className="btn btn-primary pt-2">Update profile</a>
                                     </Link>
@@ -122,41 +128,42 @@ const ListPets = ({ pets, query }) => {
                             </div>
                         </div>
                     </div>
-                    <hr />
                 </article>
+                </div>
             );
         });
     };
 
+    const sideDrawer = {
+        position: 'fixed',
+        width: '280px',
+        maxWidth: '70%',
+        height: '100%',
+        zIndex: '200',
+        backgroundColor: 'white',
+        padding: '32px 16px',
+        boxSizing: 'border-box',
+        border: '1px solid #eee'
+    }
 
     return (
         <React.Fragment>
         <Layout>
-            <Private>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-md-2">
-                            <ul class="list-group">
-                                <li className="list-group-item">
-                                    <a href="/user/crud/pet">Create Pets </a>
-                                </li>
-
-                                <li className="list-group-item">
-                                    <a href="/user/update">Update profile</a>
-                                </li>
-                            </ul>
-                        </div>
+        <Private>
+            <div className="row">
+                <div className="col-md-3">
+                    <div style={sideDrawer}>
+                        <ul>
+                            <li><a href="/user/crud/pet">Create Pets </a></li>
+                            <li><a href="/user/update">Update profile</a></li>
+                        </ul>
                     </div>
                 </div>
-            </Private>
-            <div className="container-fluid">
-                    <div className="row">
-                    <div className="col-md-12">
-                    {message && <div className="alert alert-warning">{message}</div>}
+                <div className="col-md-8">
                     {showAllPets()}
                 </div>
-                    </div>
             </div>
+            </Private>
         </Layout>
         </React.Fragment>
     );
