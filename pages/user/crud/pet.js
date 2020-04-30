@@ -1,6 +1,5 @@
 import Layout from '../../../components/Layout';
 import PetCreate from '../../../components/crud/PetCreate';
-import Link from 'next/link';
 
 const Pet = () => {
     return (

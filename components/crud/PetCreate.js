@@ -37,7 +37,7 @@ const PetCreate = ({ router }) => {
         hidePublishButton: false
     });
 
-    const { error, sizeError, success, formData, name, hidePublishButton, id, pin } = values;
+    const { error, success, formData, name, id, pin } = values;
     const token = getCookie('token');
 
     useEffect(() => {

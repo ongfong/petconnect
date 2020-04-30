@@ -1,10 +1,11 @@
 import Layout from '../../components/Layout';
 import { useState, useEffect } from 'react';
+
 import QRCode from 'qrcode.react'
 import Admin from '../../components/auth/Admin';
 import { listPetsRequestTags } from '../../actions/admin'
+import CreateCategory from '../../components/admin/CreateCategory/CreateCategory'
 import { DOMAIN } from '../../config';
-import Link from 'next/link';
 
 const AdminIndex = () => {
 
@@ -28,18 +29,33 @@ const AdminIndex = () => {
         return tags.map((tag, i) => {
             return (
                 <div key={i} className="pb-5">
-                    <h3>{tag.id}</h3>
-                    <QRCode value={`${DOMAIN}/qrcode/${tag.id}`} />,
+                    <h5>{tag.id}</h5>
+                        <QRCode value={`${DOMAIN}/qrcode/${tag.id}`} />
                     </div>
                 );
             });
         };
     return (
         <Layout>
-            <Admin>
-                <div className="row">
-                    <div className="col-md-12">
-                        {showAllRequestTags()}
+             <Admin>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-12 pt-5 pb-5">
+                            <h2>Admin Dashboard</h2>
+                        </div>
+                        <div className="col-md-4">
+                            <ul class="list-group">
+                                <li className="list-group-item">
+                                    <CreateCategory/>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>QR code From Request tags</h3>
+                            <div className="col-md-8">
+                                {showAllRequestTags()}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Admin>
@@ -48,11 +64,3 @@ const AdminIndex = () => {
 };
 
 export default AdminIndex;
-
- {/* <section>
-    <img
-        className="img img-fluid"
-        style={{ maxHeight: '150px', width: 'auto' }}
-        src={`${API}/tag/photo/${tag.id}`}
-        alt={tag.id}/>
-    </section> */}
