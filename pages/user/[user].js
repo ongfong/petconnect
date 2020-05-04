@@ -14,9 +14,6 @@ const ListPets = ({ pets, query }) => {
     const [message, setMessage] = useState('');
     const token = getCookie('token');
 
-    const [buttonLost, setButtonLost] = useState(false);
-    const [buttonFind, setButtonFind] = useState(true);
-
     const deletePet = id => {
         removePet(id, token).then(data => {
             if (data.error) {
@@ -36,8 +33,6 @@ const ListPets = ({ pets, query }) => {
                 setMessage(data.message);
             }
         });
-        setButtonLost(true);
-        setButtonFind(false);
     };
 
     const findPet = id => {
@@ -48,8 +43,6 @@ const ListPets = ({ pets, query }) => {
                 setMessage(data.message);
             }
         });
-        setButtonLost(false);
-        setButtonFind(true);
     };
 
     const deleteConfirm = id => {
@@ -112,10 +105,10 @@ const ListPets = ({ pets, query }) => {
                                         Delete
                                 </button>
                                 <br></br>
-                                <button disabled={buttonLost} className="btn btn-warning btn-sm" onClick={() => lostConfirm(pet.id)}>
+                                <button className="btn btn-warning btn-sm" onClick={() => lostConfirm(pet.id)}>
                                         Lost
                                 </button>
-                                <button disabled={buttonFind}className="btn btn-success btn-sm" onClick={() => findConfirm(pet.id)}>
+                                <button className="btn btn-success btn-sm" onClick={() => findConfirm(pet.id)}>
                                         Find
                                 </button>
                             </div>
