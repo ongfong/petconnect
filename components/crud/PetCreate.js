@@ -8,17 +8,18 @@ import { getCategories } from '../../actions/category';
 import { createPet } from '../../actions/pet';
 
 const PetCreate = ({ router }) => {
-    const petFromLS = () => {
-        if (typeof window === 'undefined') {
-            return false;
-        }
 
-        if (localStorage.getItem('pet')) {
-            return JSON.parse(localStorage.getItem('pet'));
-        } else {
-            return false;
-        }
-    };
+    // const petFromLS = () => {
+    //     if (typeof window === 'undefined') {
+    //         return false;
+    //     }
+
+    //     if (localStorage.getItem('pet')) {
+    //         return JSON.parse(localStorage.getItem('pet'));
+    //     } else {
+    //         return false;
+    //     }
+    // };
 
     const [categories, setCategories] = useState([]);
 
@@ -34,10 +35,11 @@ const PetCreate = ({ router }) => {
         id: '',
         pin:'',
         name: '',
+        gender: 'Male',
         hidePublishButton: false
     });
 
-    const { error, success, formData, name, id, pin } = values;
+    const { error, success, formData, name, gender, id, pin } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -130,6 +132,12 @@ const PetCreate = ({ router }) => {
                     <label className="text-muted">Name</label>
                     <input type="text" className="form-control" value={name} onChange={handleChange('name')} />
                 </div>
+                <div className="form-group">
+                <select value={gender} onChange={handleChange('gender')}>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                </select>
+            </div>
                 <div>
                     <button type="submit" className="btn btn-primary">
                         Create 
