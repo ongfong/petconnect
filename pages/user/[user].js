@@ -1,5 +1,5 @@
 import Layout from '../../components/Layout';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { withRouter } from 'next/router';
 import { getCookie } from '../../actions/auth';
 import Private from '../../components/auth/Private';
@@ -14,19 +14,8 @@ const ListPets = ({ pets, query }) => {
     const [message, setMessage] = useState('');
     const token = getCookie('token');
 
-    // const loadPets = () => {
-    //     listPets(query.user).then(data => {
-    //         if (data.error) {
-    //             console.log(data.error);
-    //         } else {
-    //             setPets(data);
-    //         }
-    //     });
-    // };
-
-    // useEffect(() => {
-    //     loadPets();
-    // }, []);
+    const [buttonLost, setButtonLost] = useState(false);
+    const [buttonFind, setButtonFind] = useState(true);
 
     const deletePet = id => {
         removePet(id, token).then(data => {
@@ -47,6 +36,8 @@ const ListPets = ({ pets, query }) => {
                 setMessage(data.message);
             }
         });
+        setButtonLost(true);
+        setButtonFind(false);
     };
 
     const findPet = id => {
@@ -57,6 +48,8 @@ const ListPets = ({ pets, query }) => {
                 setMessage(data.message);
             }
         });
+        setButtonLost(false);
+        setButtonFind(true);
     };
 
     const deleteConfirm = id => {
@@ -119,10 +112,10 @@ const ListPets = ({ pets, query }) => {
                                         Delete
                                 </button>
                                 <br></br>
-                                <button className="btn btn-warning btn-sm" onClick={() => lostConfirm(pet.id)}>
+                                <button disabled={buttonLost} className="btn btn-warning btn-sm" onClick={() => lostConfirm(pet.id)}>
                                         Lost
                                 </button>
-                                <button className="btn btn-success btn-sm" onClick={() => findConfirm(pet.id)}>
+                                <button disabled={buttonFind}className="btn btn-success btn-sm" onClick={() => findConfirm(pet.id)}>
                                         Find
                                 </button>
                             </div>

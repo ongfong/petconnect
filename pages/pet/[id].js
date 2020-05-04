@@ -21,16 +21,18 @@ const ProfilePetUpdate = ({ pet, router }) => {
         photo: '',
         petData: '',
         role: '',
+        gender: ''
     });
 
     const token = getCookie('token');
-    const { name, age, breed, blood, weight, error, success, loading, photo, petData, role } = values;
+    const { name, age, breed, blood, weight, error, success, loading, photo, petData, role, gender } = values;
 
     const init = () => {
         getProfilePet(pet.id).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
+                console.table(data);
                 setValues({
                     ...values,
                     name: data.name,
@@ -38,7 +40,8 @@ const ProfilePetUpdate = ({ pet, router }) => {
                     breed: data.breed,
                     blood: data.blood,
                     weight: data.weight,
-                    role: data.role
+                    role: data.role,
+                    gender: data.gender
                 });
             }
         });
@@ -71,6 +74,7 @@ const ProfilePetUpdate = ({ pet, router }) => {
                     blood: data.blood,
                     weight: data.weight,
                     role: data.role,
+                    gender: data.gender,
                     success: true,
                     loading: false
                 });
@@ -95,6 +99,15 @@ const ProfilePetUpdate = ({ pet, router }) => {
                 <input onChange={handleChange('age')} type="text" value={age} className="form-control" />
             </div>
             <div className="form-group">
+                <label className="text-muted">Gender</label>
+                <br />
+                <select value={gender} onChange={handleChange('gender')}>
+                        <option value="Not specified">Not specified</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                </select>
+            </div>
+            <div className="form-group">
                 <label className="text-muted">Breed</label>
                 <input onChange={handleChange('breed')} type="text" value={breed} className="form-control" />
             </div>
@@ -107,6 +120,8 @@ const ProfilePetUpdate = ({ pet, router }) => {
                 <input onChange={handleChange('weight')} type="text" value={weight} className="form-control" />
             </div>
             <div className="form-group">
+                <label className="text-muted">Privacy</label>
+                <br />
                 <select value={role} onChange={handleChange('role')}>
                         <option value="1">public</option>
                         <option value="0">private</option>

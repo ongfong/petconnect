@@ -12,10 +12,11 @@ const SinglePet = ({ pet, router }) => {
     const [values, setValues] = useState({
         namePet: '',
         name: '',
+        gender: '',
         email: ''
     });
 
-    const { namePet, name, email } = values;
+    const { namePet, name, gender, email } = values;
 
     const init = () => {
         getProfileQrcodePet(pet.id).then(data => {
@@ -26,6 +27,7 @@ const SinglePet = ({ pet, router }) => {
                     ...values,
                     namePet: data.name,
                     name: data.postedBy.name,
+                    gender: data.gender,
                     email: data.postedBy.email,
                 });
             }
@@ -45,6 +47,10 @@ const SinglePet = ({ pet, router }) => {
                 <div className="form-group">
                     <label className="text-muted">ชื่อสัตว์เลี้ยง/Pet name</label>
                     <input type="text" value={namePet} className="form-control" />
+                </div>
+                <div className="form-group">
+                    <label className="text-muted">เพศสัตว์เลี้ยง/Pet gender</label>
+                    <input type="text" value={gender} className="form-control" />
                 </div>
                 <div className="form-group">
                     <label className="text-muted">ชื่อเจ้าของสัตว์เลี้ยง/Pet owner's name</label>
