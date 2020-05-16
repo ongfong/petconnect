@@ -12,11 +12,10 @@ const SinglePet = ({ pet, router }) => {
     const [values, setValues] = useState({
         namePet: '',
         name: '',
-        gender: '',
         email: ''
     });
 
-    const { namePet, name, gender, email } = values;
+    const { namePet, name, email } = values;
 
     const init = () => {
         getProfileQrcodePet(pet.id).then(data => {
@@ -27,7 +26,6 @@ const SinglePet = ({ pet, router }) => {
                     ...values,
                     namePet: data.name,
                     name: data.postedBy.name,
-                    gender: data.gender,
                     email: data.postedBy.email,
                 });
             }
@@ -42,23 +40,31 @@ const SinglePet = ({ pet, router }) => {
     }, []);
 
     const profilePetQrForm = () => (
-        <form >
+        <form style={fontStyle}>
             <fieldset disabled>
                 <div className="form-group">
-                    <label className="text-muted">ชื่อสัตว์เลี้ยง/Pet name</label>
-                    <input type="text" value={namePet} className="form-control" />
+                    <label>ชื่อสัตว์เลี้ยง / Pet name</label>
+                    <input 
+                        type="text" 
+                        value={namePet} 
+                        className="form-control" 
+                        style={inputFound} />
                 </div>
                 <div className="form-group">
-                    <label className="text-muted">เพศสัตว์เลี้ยง/Pet gender</label>
-                    <input type="text" value={gender} className="form-control" />
+                    <label>ชื่อเจ้าของสัตว์เลี้ยง / Pet owner's name</label>
+                    <input 
+                        type="text" 
+                        value={name} 
+                        className="form-control" 
+                        style={inputFound} />
                 </div>
                 <div className="form-group">
-                    <label className="text-muted">ชื่อเจ้าของสัตว์เลี้ยง/Pet owner's name</label>
-                    <input type="text" value={name} className="form-control" />
-                </div>
-                <div className="form-group">
-                    <label className="text-muted">อีเมล์เจ้าของสัตว์เลี้ยง/Pet owner's email</label>
-                    <input type="text" value={email} className="form-control" />
+                    <label>อีเมล์เจ้าของสัตว์เลี้ยง / Pet owner's email</label>
+                    <input 
+                        type="text" 
+                        value={email} 
+                        className="form-control" 
+                        style={inputFound} />
                 </div>
             </fieldset>
         </form>
@@ -67,7 +73,7 @@ const SinglePet = ({ pet, router }) => {
     return (
         <React.Fragment>
         <Layout>
-        <div className="container">
+        <div className="container-fluid" style={containerFound}>
             <div className="row">
                 <div className="col-md-4">
                     <img
@@ -95,6 +101,37 @@ SinglePet.getInitialProps = ({ query }) => {
             return { pet: data };
         }
     });
+};
+
+const containerFound = {
+    width: '100%',
+    minHeight: '92.5vh',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: 'linear-gradient(-135deg, #ffd954, #f2ab39)',
+    top: '0',
+    left: '0'
+};
+
+const fontStyle = {
+    fontSize: '15px',
+};
+
+const inputFound = {
+    fontSize: '15px',
+    lineHeight: '1.5',
+    color: '#666666',
+    display: 'block',
+    width: '100%',
+    background: '#e6e6e6',
+    height: '50px',
+    borderRadius: '25px',
+    padding: '0 30px 0 68px',
+    marginTop: '10px',
+    outline: 'none',
+    border: 'none'
 };
 
 export default SinglePet;
