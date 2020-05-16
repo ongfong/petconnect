@@ -28,7 +28,7 @@ const PetCreate = ({ router }) => {
         id: '',
         pin:'',
         name: '',
-        gender: 'Male',
+        gender: 'Not specified',
         hidePublishButton: false
     });
 
@@ -144,7 +144,7 @@ const PetCreate = ({ router }) => {
                         style={inputCreate}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary" style={buttonStyle}>
                         Create 
                 </button>
             </form>
@@ -153,34 +153,45 @@ const PetCreate = ({ router }) => {
     };
 
    return (
-    <div className="container-fluid">
-    <div className="row">
-        <div className="col-md-8">
-        {createPetForm()}
-            <div className="pt-3">
-                {showError()}
-                {showSuccess()}
-            </div>
-             </div>
+    <div className="container-fluid"style={containerStyle}>
+    <div className="row" >
+        <span className="create-form-title" style={createName}>
+            Create a new pet
+  </span>
+        <div className="col-md-6 offset-md-1">
+            {showError()}
+            {showSuccess()}
+            {createPetForm()}
+        </div>
 
-<div className="col-md-4">
-    <div>
+    <div className="col-md-4">
+       <div>
         <div className="form-group pb-2">
-            <h5>Featured image</h5>
-            <small className="text-muted">Max size: 1mb</small>
-                    <label className="btn btn-outline-info">
-                        Upload featured image
+            <span style={nameStyle}>รูปภาพของสัตว์เลี้ยง / Featured image</span>
+            <hr />
+            <small className="text-muted" style={{marginLeft: '20px'}}>Max size: 1mb</small><br />
+                    <label className="btn btn-outline-info" style={{marginTop: '8px', marginLeft: '20px'}}>
+                        Profile photo
                         <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
                     </label>
                     </div>
             </div>
-            <div></div>
-            <h5>Categories</h5>
-            <hr />
-            <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showCategories()}</ul>
+            <div>
+                <span style={nameStyle}>Categories</span>
+                <hr />
+                <ul style={radioStyle}>{showCategories()}</ul>
             </div>
-            </div>
+            <div>
+                <span style={nameStyle}>เพศ / Gender</span>
+                    <select value={gender} onChange={handleChange('gender')} style={genderStyle}>
+                        <option value="ไม่ระบุ / Not specified">ไม่ระบุ / Not specified</option>
+                        <option value="ชาย / Male">ชาย / Male</option>
+                        <option value="หญิง / Female">หญิง / Female</option>
+                    </select>
+            </div> 
+        </div>
     </div>
+ </div>
 );
 };
 
@@ -198,6 +209,7 @@ const containerStyle = {
     alignItems: 'center',
     top: '0',
     left: '0'
+
 };
 
 const createName = {
@@ -220,13 +232,6 @@ const nameStyle = {
     marginBottom: '15px'
 };
 
-const nameStyle2 = {
-    src: 'url(../../../fonts/BANGNA-NEW.TTF)',
-    fontWeight: 'bold',
-    fontSize: '15px',
-    textAlign: 'left',
-};
-
 const buttonStyle = {
     backgroundColor: 'green',
     border: 'none',
@@ -234,24 +239,13 @@ const buttonStyle = {
     height: '50px',
     width: '20%',
     margin: '0 auto',
-    marginTop: '40px'
-};
-
-const btnStyle = {
-    width: '100%',
-    display: '-webkit-box',
-    display: '-webkit-flex',
-    display: '-moz-box',
-    display: '-ms-flexbox',
-    display: 'flex',
-    flexWrap: 'wrap'
+    marginTop: '30px'
 };
 
 const inputCreate = {
     fontSize: '15px',
     lineHeight: '1.5',
     color: '#666666',
-
     display: 'block',
     width: '100%',
     background: '#e6e6e6',
@@ -277,4 +271,3 @@ const genderStyle = {
 };
 
 export default withRouter(PetCreate);
-

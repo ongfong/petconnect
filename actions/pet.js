@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-fetch';
 import { API } from '../config';
-import queryString from 'query-string';
 
 export const createPet = (pet, token) => {
     return fetch(`${API}/pets`, {

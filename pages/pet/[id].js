@@ -115,9 +115,9 @@ const ProfilePetUpdate = ({ pet, router }) => {
                 <label style={nameStyle}>เพศ / Gender</label>
                 <br />
                 <select value={gender} onChange={handleChange('gender')} style={roleStyle}>
-                        <option value="Not specified">Not specified</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="ไม่ระบุ / Not specified">ไม่ระบุ / Not specified</option>
+                        <option value="ชาย / Male">ชาย / Male</option>
+                        <option value="หญิง / Female">หญิง / Female</option>
                 </select>
             </div>
             <div className="form-group">

@@ -43,8 +43,9 @@ const LostListComponent = () => {
         }
     
         return pets.map((pet, i) => {
+            console.log(pet.gender);
             return (
-                <section style={post}>
+                <section style={post} key={pet.id}>
                     <div style={style}>
                         <div key={i}>
                             <div className="row">
