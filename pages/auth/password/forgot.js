@@ -32,28 +32,29 @@ const ForgotPassword = () => {
     const showMessage = () => (message ? <div className="alert alert-success">{message}</div> : '');
 
     const passwordForgotForm = () => (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
             <div className="form-group pt-5">
                 <input
                     type="email"
                     onChange={handleChange('email')}
                     className="form-control"
                     value={email}
-                    placeholder="Type your email"
+                    placeholder="Enter your email address"
                     required
+                    style={inputForgot}
                 />
             </div>
             <div>
-                <button className="btn btn-primary">Send password reset link</button>
+                <button className="btn btn-primary" style={buttonForgot}>Send password reset link</button>
             </div>
         </form>
     );
 
     return (
         <Layout>
-            <div className="container">
-                <h2>Forgot password</h2>
-                <hr />
+            <div className="container-fluid" style={containerForgot}>
+                <h2 style={forgotStyle}>Forgot password</h2>
+                {/* <hr /> */}
                 {showError()}
                 {showMessage()}
                 {showForm && passwordForgotForm()}
@@ -62,4 +63,47 @@ const ForgotPassword = () => {
     );
 };
 
+const containerForgot = {
+    width: '100%',
+    minHeight: '100vh',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: '#e4b660',
+    background: '-webkit-linear-gradient(-135deg, #ffd954, #f2ab39)',
+    background: 'linear-gradient(-135deg, #ffd954, #f2ab39)',
+    top: '0',
+    left: '0'
+};
+
+const forgotStyle = {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingTop: '50px'
+};
+
+const inputForgot = {
+    fontSize: '15px',
+    lineHeight: '1.5',
+    color: '#666666',
+    display: 'block',
+    width: '30%',
+    background: '#e6e6e6',
+    height: '50px',
+    borderRadius: '25px',
+    padding: '0 30px 0 68px',
+    outline: 'none',
+    border: 'none',
+    margin: '0 auto',
+};
+
+const buttonForgot = {
+    width: '30%',
+    height: '50px',
+    backgroundColor: 'blue',
+    border: 'none',
+    borderRadius: '25px',
+    margin: '0 auto',
+    display: 'block',
+    backgroundColor: '#0384BD',  
+};
 export default ForgotPassword;

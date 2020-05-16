@@ -17,11 +17,6 @@ const createCategory = () => {
     const clickSubmit = e => {
         e.preventDefault();
         addCategory({ name }, token).then(data => {
-            // if (data.error) {
-            //     setValues({ ...values, error: data.error, success: false });
-            // } else {
-            //     setValues({ ...values, error: false, success: true, name: '' });
-            // }
             setValues({ ...values, error: false, success: true, name: '' });
         });
     };
@@ -33,11 +28,16 @@ const createCategory = () => {
     const newCategoryFom = () => (
         <form onSubmit={clickSubmit}>
             <div className="form-group">
-                <label className="text-muted">Pet Category</label>
-                <input type="text" className="form-control" onChange={handleChange} value={name} required />
+                <label style={petCatStyle}>Pet Category</label>
+                <input style={inputCat} 
+                    type="text" 
+                    className="form-control" 
+                    onChange={handleChange} 
+                    value={name} 
+                    required />
             </div>
             <div>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary" style={buttonStyle}>
                     Add
                 </button>
             </div>
@@ -45,6 +45,37 @@ const createCategory = () => {
     );
 
     return <React.Fragment>{newCategoryFom()}</React.Fragment>;
+};
+
+const petCatStyle = {
+    fontSize: '16px',
+    fontWeight: 'bold'
+};
+
+const inputCat = {
+    fontSize: '15px',
+    lineHeight: '1.5',
+    color: '#666666',
+    display: 'block',
+    width: '100%',
+    background: '#e6e6e6',
+    height: '50px',
+    borderRadius: '25px',
+    padding: '0 30px 0 68px',
+    marginTop: '10px',
+    outline: 'none',
+    border: 'none'
+};
+
+const buttonStyle = {
+    backgroundColor: 'green',
+    margin: '0 auto',
+    display: 'block',
+    marginTop: '10px',
+    border: 'none',
+    borderRadius: '25px',
+    height: '45px',
+    width: '25%'
 };
 
 export default createCategory;

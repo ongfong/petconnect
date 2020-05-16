@@ -10,7 +10,10 @@ import {
   Nav,
   NavItem,
   NavLink,
-
+  UncontrolledDropdown, 
+  DropdownToggle, 
+  DropdownMenu, 
+  DropdownItem 
 } from 'reactstrap';
 
 const Header = () => {
@@ -22,9 +25,9 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar style={{backgroundColor: '#FCA639' ,color: 'white'}} light expand="md">
+      <Navbar color="light" light expand="md" >
         <Link href="/">
-          <NavLink style={{ cursor: 'pointer'}} className="font-weight-bold">{APP_NAME}</NavLink>
+          <NavLink style={fontName}>{APP_NAME}</NavLink>
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -33,48 +36,75 @@ const Header = () => {
               <React.Fragment>
                 <NavItem>
                   <Link href="/signin">
-                    <NavLink style={{ cursor: 'pointer', color: 'white'} } >Signin</NavLink>
+                    <NavLink style={NavStyleRight1}>Sign In</NavLink>
                   </Link>
                 </NavItem>
                 <NavItem>
                   <Link href="/signup">
-                    <NavLink style={{ cursor: 'pointer', color: 'white' }} >Signup</NavLink>
+                    <NavLink style={NavStyleRight1}>Sign Up</NavLink>
                   </Link>
                 </NavItem>
               </React.Fragment>
             )}
 
-              {isAuth() && isAuth().role === 0 && (
-              <NavItem >
+            {isAuth() && isAuth().role === 0 && (
+              <NavItem>
+                 {/* <Link href = {`/user/${isAuth()._id}`}>
+                    <NavLink style={NavStyleRight1}>{`${isAuth().name}`}</NavLink>
+                 </Link> */}
+              
+                <UncontrolledDropdown>
+                  <DropdownToggle tag="a" className="nav-link" caret  style={NavStyleRight1}>
+                    {`${isAuth().name}`}
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem tag="a" href={`/user/${isAuth()._id}`} style={NavStyleRight3}>My Profile</DropdownItem>
+                    <DropdownItem tag="a" href="/user/crud/pet" style={NavStyleRight3}>Create Pet</DropdownItem>
+                    <DropdownItem tag="a" href="/user/update" style={NavStyleRight3}>Update Profile</DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </NavItem>
+            )}
+
+            {/* {isAuth() && isAuth().role === 0 && (
+              <NavItem>
+                 <Link href = "/user/crud/pet">
+                    <NavLink style={NavStyleRight1}>Create Pet</NavLink>
+                 </Link>
+              </NavItem>
+            )}
+
+            {isAuth() && isAuth().role === 0 && (
+              <NavItem>
+                 <Link href = "/user/update">
+                    <NavLink style={NavStyleRight1}>Update Profile</NavLink>
+                 </Link>
+              </NavItem>
+            )} */}
+          
+            {isAuth() && isAuth().role === 1 && (
+              <NavItem>
+                <Link href = "/admin">
+                  <NavLink style={NavStyleRight1} >{`${isAuth().name}`}</NavLink>
+                </Link>
+              </NavItem>
+            )}
+
+            {isAuth() && isAuth().role === 0 && (
+              <NavItem>
                 <Link href = "/tag/requiretag">
-                  <NavLink style={{ cursor: 'pointer', color: 'white'}} >Request for tag</NavLink>
+                  <NavLink style={NavStyleRight1}>Request Tag</NavLink>
                 </Link>
               </NavItem>
             )}    
 
-            {isAuth() && isAuth().role === 0 && (
-              <NavItem>
-                <Link href = {`/user/${isAuth()._id}`}>
-                  <NavLink style={{ cursor: 'pointer', color: 'white' }} >{`${isAuth().name}`}</NavLink>
-                </Link>
-              </NavItem>
-            )}
-
-            {isAuth() && isAuth().role === 1 && (
-              <NavItem>
-                <Link href = "/admin">
-                  <NavLink style={{ cursor: 'pointer', color: 'white' }} >{`${isAuth().name}`}</NavLink>
-                </Link>
-              </NavItem>
-            )}
             {isAuth() && (
               <NavItem>
-                <NavLink style={{ cursor: 'pointer', color: 'white' }} onClick={() => signout(() => Router.replace(`/signin`))}>
+                <NavLink style={NavStyleRight2} onClick={() => signout(() => Router.replace(`/signin`))}>
                   Signout
                 </NavLink>
               </NavItem>
             )}  
-
          </Nav>
         </Collapse>
       </Navbar>
@@ -82,5 +112,39 @@ const Header = () => {
   );
 };
 
+const fontName = { 
+  cursor: 'pointer',
+  fontWeight: 'bold',
+  fontSize: '18px',
+  paddingLeft:'140px', 
+  color: 'orange'
+};
+
+const NavStyleRight1 = { 
+  cursor: 'pointer',
+  src: 'url(../../../fonts/BANGNA-NEW.TTF)',
+  fontWeight: 'bold',
+  fontSize: '18px',
+  paddingRight: '50px',
+  color: 'orange'
+};
+
+const NavStyleRight2 = { 
+  cursor: 'pointer',
+  src: 'url(../../../fonts/BANGNA-NEW.TTF)',
+  fontWeight: 'bold',
+  fontSize: '18px',
+  paddingRight: '170px',
+  color: 'orange'
+};
+
+const NavStyleRight3 = {
+  cursor: 'pointer',
+  src: 'url(../../../fonts/BANGNA-NEW.TTF)',
+  fontSize: '18px',
+  textAlign: 'left',
+  backgroundColor: '#f8f9fa',
+
+};
 
 export default Header;

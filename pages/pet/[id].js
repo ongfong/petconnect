@@ -25,7 +25,7 @@ const ProfilePetUpdate = ({ pet, router }) => {
     });
 
     const token = getCookie('token');
-    const { name, age, breed, blood, weight, error, success, loading, photo, petData, role, gender } = values;
+    const { name, age, breed, blood, weight, error, success, loading, photo, petData, role, gender} = values;
 
     const init = () => {
         getProfilePet(pet.id).then(data => {
@@ -83,56 +83,90 @@ const ProfilePetUpdate = ({ pet, router }) => {
     };
 
     const profilePetUpdateForm = () => (
+       <div className="container-profilepet" >
         <form onSubmit={handleSubmit}>
             <div className="form-group">
-                <label className="btn btn-outline-info">
+                <label className="btn btn-outline-info" style={profileProtoStyle}>
                     Profile photo
                     <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
                 </label>
             </div>
             <div className="form-group">
-                <label className="text-muted">Name</label>
-                <input onChange={handleChange('name')} type="text" value={name} className="form-control" />
+                <label style={nameStyle}>ชื่อสัตว์เลี้ยง / Name</label>
+                <input 
+                    onChange={handleChange('name')} 
+                    type="text" 
+                    value={name} 
+                    className="form-control" 
+                    style={inputUpdate}
+                />
             </div>
             <div className="form-group">
-                <label className="text-muted">Age</label>
-                <input onChange={handleChange('age')} type="text" value={age} className="form-control" />
+                <label style={nameStyle}>อายุ / Age</label>
+                <input 
+                    onChange={handleChange('age')} 
+                    type="text" 
+                    value={age} 
+                    className="form-control" 
+                    style={inputUpdate}
+                />
             </div>
             <div className="form-group">
-                <label className="text-muted">Gender</label>
+                <label style={nameStyle}>เพศ / Gender</label>
                 <br />
-                <select value={gender} onChange={handleChange('gender')}>
+                <select value={gender} onChange={handleChange('gender')} style={roleStyle}>
                         <option value="Not specified">Not specified</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                 </select>
             </div>
             <div className="form-group">
-                <label className="text-muted">Breed</label>
-                <input onChange={handleChange('breed')} type="text" value={breed} className="form-control" />
+                <label style={nameStyle}>สายพันธุ์ / Breed</label>
+                <input 
+                    onChange={handleChange('breed')} 
+                    type="text" 
+                    value={breed} 
+                    className="form-control" 
+                    style={inputUpdate}
+                />
             </div>
             <div className="form-group">
-                <label className="text-muted">Blood</label>
-                <input onChange={handleChange('blood')} type="text" value={blood} className="form-control" />
+                <label style={nameStyle}>กรุ๊ปเลือด / Blood</label>
+                <input 
+                    onChange={handleChange('blood')} 
+                    type="text" 
+                    value={blood} 
+                    className="form-control" 
+                    style={inputUpdate}
+                />
             </div>
             <div className="form-group">
-                <label className="text-muted">Weight</label>
-                <input onChange={handleChange('weight')} type="text" value={weight} className="form-control" />
+                <label style={nameStyle}>น้ำหนัก / Weight</label>
+                <input 
+                    onChange={handleChange('weight')} 
+                    type="text" 
+                    value={weight} 
+                    className="form-control" 
+                    style={inputUpdate}
+                />
             </div>
             <div className="form-group">
-                <label className="text-muted">Privacy</label>
+                <label style={nameStyle}>ความเป็นส่วนตัวของข้อมูลเมื่อพบสัตว์เลี้ยง / Role</label><br/>
+                <label style={nameStyle2}>Public : เมื่อมีผู้พบสแกน QR Code ที่แท็ก จะแสดงข้อมูลสัตว์เลี้ยง คือ รูป ชื่อสัตว์เลี้ยง ชื่อเจ้าของและอีเมล์.</label><br/>
+                <label style={nameStyle2}>Private : เมื่อมีผู้พบสแกน QR Code ที่แท็ก, แสดงข้อความให้นำสัตว์เลี้ยงไปส่งที่สถานีตำรวจ.</label>
                 <br />
-                <select value={role} onChange={handleChange('role')}>
-                        <option value="1">public</option>
-                        <option value="0">private</option>
+                <select value={role} onChange={handleChange('role')} style={roleStyle}>
+                    <option value="0">private</option>
+                    <option value="1">public</option>
                 </select>
             </div>
             <div>
-                <button type="submit" className="btn btn-primary">
-                    Submit
+                <button type="submit" className="btn btn-primary" style={buttonStyle}>
+                    Update profile
                 </button>
             </div>
         </form>
+       </div>
     );
 
     const showError = () => (
@@ -156,23 +190,26 @@ const ProfilePetUpdate = ({ pet, router }) => {
     return (
         <React.Fragment>
         <Layout>
-        <div className="container">
+        <div className="container-fluid" style={containerUpdate}>
+         <div className="container">
             <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-4" style={{marginTop: '30px'}}>
                     <img
-                         src={`${API}/pets/photo/${pet.id}`}
+                        src={`${API}/pets/photo/${pet.id}`}
                         className="img img-fluid img-thumbnail mb-3"
-                        style={{ maxHeight: 'auto', maxWidth: '100%' }}
+                        style={{ maxHeight: 'auto', maxWidth: '80%' }}
                         alt="user profile"
                     />
                 </div>
                 <div className="col-md-8 mb-5">
+                    <br />
                     {showSuccess()}
                     {showError()}
                     {showLoading()}
                     {profilePetUpdateForm()}
                 </div>
             </div>
+          </div>
         </div>
         </Layout>
     </React.Fragment>
@@ -190,4 +227,71 @@ ProfilePetUpdate.getInitialProps = ({ query }) => {
     });
 };
 
+const profileProtoStyle = {
+    cursor: 'pointer',
+    marginTop: '9px'
+};
+
+const nameStyle = {
+    src: 'url(../../../fonts/BANGNA-NEW.TTF)',
+    fontWeight: 'bold',
+    fontSize: '15px',
+    textAlign: 'left'
+};
+
+const nameStyle2 = {
+    src: 'url(../../../../fonts/BANGNA-NEW.TTF)',
+    fontSize: '16px',
+    marginLeft: '20px'
+};
+
+const inputUpdate = {
+    fontSize: '15px',
+    lineHeight: '1.5',
+    color: '#666666',
+    display: 'block',
+    width: '100%',
+    background: '#e6e6e6',
+    height: '50px',
+    borderRadius: '25px',
+    padding: '0 30px 0 68px',
+    marginTop: '10px',
+    outline: 'none',
+    border: 'none'
+};
+
+const roleStyle = {
+    fontSize: '18px',
+    borderRadius: '25px',
+    border: 'none',
+    fontSize: '18px',
+    marginTop: '10px',
+    height: '35px',
+    width: '100%',
+    padding: '0 30px 0 68px',
+    background: '#e6e6e6',
+    color: '#666666',
+};
+
+const buttonStyle = {
+    width: '40%',
+    display: 'block',
+    backgroundColor: 'green',
+    margin: '0 auto',
+    marginTop: '30px',
+    border: 'none',
+    borderRadius: '25px',
+    height: '50px',
+    backgroundColor: '#0384BD',
+};
+
+const containerUpdate = {
+    width: '100%',
+    minHeight: '100vh',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    top: '0',
+    left: '0'
+};
 export default withRouter(ProfilePetUpdate);

@@ -40,19 +40,39 @@ const ActivateAccount = ({ router }) => {
 
     return (
         <Layout>
-            <div className="container">
-                <h3 className="pb-4">Hey {name}, Ready to activate your account?</h3>
-                {showLoading()}
-                {error && error}
-                {success && 'You have successfully activated your account. Please signin.'}
-                {showButton && (
-                    <button className="btn btn-outline-primary" onClick={clickSubmit}>
-                        Activate Account
-                    </button>
-                )}
+            <div style={containerActivate}>
+                <div className="container">
+                    <h3 className="pb-4" style={fontStyle}>Hey {name}, Ready to activate your account?</h3>
+                    {showLoading()}
+                    {error && error}
+                    {success && 'You have successfully activated your account. Please sign in.'}
+                    {showButton && (
+                        <button className="btn btn-outline-primary" onClick={clickSubmit}>
+                            Activate Account
+                        </button>
+                    )}
+                </div>
             </div>
+            
         </Layout>
     );
+};
+
+const containerActivate = {
+    width: '100%',
+    minHeight: '100vh',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    background: '#F6E0AE',
+    top: '0',
+    left: '0'
+};
+
+const fontStyle = {
+    fontWeight: 'bold'
 };
 
 export default withRouter(ActivateAccount);

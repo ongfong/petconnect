@@ -32,7 +32,6 @@ const LostListComponent = () => {
             boxShadow: '0 2px 3px #ccc',
             margin: '10px',
             boxSizing: 'border-box',
-            backgroundColor: '#E6EAEC'
         }
 
         const post = {
@@ -61,7 +60,9 @@ const LostListComponent = () => {
                                     <div style={{padding: '20px'}}>
                                         <h4 style={{color:'#FC7139'}}>ID: {pet.id}</h4>
                                         <p>Category: <strong>{pet.categories[0].name}</strong></p>
-                                         <p>Name: <strong>{pet.name}</strong></p>
+                                        <p>Name: <strong>{pet.name}</strong></p>
+                                        <p>Breed: <strong>{pet.breed}</strong></p>
+                                        <p>Gender: <strong>{pet.gender}</strong></p>
                                         Post by <strong>{pet.postedBy.name} </strong> | Lost on <strong>{moment(pet.updatedAt).fromNow()}</strong>
                                     </div>
                                 </div>

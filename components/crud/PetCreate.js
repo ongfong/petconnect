@@ -1,17 +1,28 @@
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import Router from 'next/router';
-import dynamic from 'next/dynamic';
 import { withRouter } from 'next/router';
-import { getCookie, isAuth } from '../../actions/auth';
+import { getCookie } from '../../actions/auth';
 import { getCategories } from '../../actions/category';
 import { createPet } from '../../actions/pet';
 
 const PetCreate = ({ router }) => {
 
+    // const petFromLS = () => {
+    //     if (typeof window === 'undefined') {
+    //         return false;
+    //     }
+
+    //     if (localStorage.getItem('pet')) {
+    //         return JSON.parse(localStorage.getItem('pet'));
+    //     } else {
+    //         return false;
+    //     }
+    // };
+
     const [categories, setCategories] = useState([]);
 
     const [checked, setChecked] = useState([]); // categories
+
+    // [body, setBody] = useState(petFromLS());
 
     const [values, setValues] = useState({
         error: '',
@@ -21,10 +32,11 @@ const PetCreate = ({ router }) => {
         id: '',
         pin:'',
         name: '',
+        gender: 'Male',
         hidePublishButton: false
     });
 
-    const { error, success, formData, name, id, pin } = values;
+    const { error, success, formData, name, gender, id, pin } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -64,6 +76,7 @@ const PetCreate = ({ router }) => {
 
     const handleToggle = c => () => {
         setValues({ ...values, error: '' });
+        // return the first index or -1
         const clickedCategory = checked.indexOf(c);
         const all = [...checked];
 
@@ -82,7 +95,7 @@ const PetCreate = ({ router }) => {
             categories &&
             categories.map((c, i) => (
                 <li key={i} className="list-unstyled">
-                    <input onChange={handleToggle(c._id)} type="checkbox" className="mr-2" />
+                    <input onChange={handleToggle(c._id)} type="radio" className="mr-2"/>
                     <label className="form-check-label">{c.name}</label>
                 </li>
             ))
@@ -103,62 +116,218 @@ const PetCreate = ({ router }) => {
 
     const createPetForm = () => {
         return(
+            <div className="col-md-12 offset-md-0">
             <form onSubmit={publishPet}>
                 <div className="form-group">
-                    <label className="text-muted">ID</label>
-                    <input type="text" className="form-control" value={id} onChange={handleChange('id')} />
+                    {/* <label className="text-muted" style={nameStyle}>ID</label> */}
+                    <label style={nameStyle}>รหัสแท็ก / ID</label>
+                    <input
+                        value={id} 
+                        onChange={handleChange('id')}
+                        type="text"
+                        className="form-control"
+                        style={inputCreate}
+                    />
                 </div>
                 <div className="form-group">
-                    <label className="text-muted">Pin</label>
-                    <input type="text" className="form-control" value={pin} onChange={handleChange('pin')} />
+                    <label style={nameStyle}>Pinแท็ก / Pin</label>
+                    <input 
+                        value={pin}
+                        onChange={handleChange('pin')} 
+                        type="text" 
+                        className="form-control" 
+                        style={inputCreate}
+                    />
                 </div>
                 <div className="form-group">
-                    <label className="text-muted">Name</label>
-                    <input type="text" className="form-control" value={name} onChange={handleChange('name')} />
+                    <label style={nameStyle}>ชื่อสัตว์เลี้ยง / Name</label>
+                    <input 
+                        value={name} 
+                        onChange={handleChange('name')} 
+                        type="text" 
+                        className="form-control" 
+                        style={inputCreate}
+                    />
                 </div>
-                <div>
-                    <button type="submit" className="btn btn-primary">
-                        Create 
+                {/* <div className="form-group">
+                    <select value={gender} onChange={handleChange('gender')}>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div> */}
+                {/* <div>
+                        <label style={genderStyle}>Gender</label>
+                        <select value={gender} onChange={handleChange('gender')}>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                </div> */}
+                {/* <div className="container-create-form-btn" style={btnStyle}>
+                    <button type="submit" className="btn btn-primary btn-block" style={buttonStyle}>
+                        Create Pet
                     </button>
-                </div>
+                </div> */}
             </form>
+            </div>
         );
     };
 
    return (
-    <div className="container-fluid">
-    <div className="row">
-        <div className="col-md-8">
+    <div className="container-fluid"style={containerStyle}>
+    <div className="row" >
+        <span className="create-form-title" style={createName}>
+            Create a new pet
+		</span>
+        <div className="col-md-6 offset-md-1">
+            {showError()}
+            {showSuccess()}
             {createPetForm()}
-            <div className="pt-3">
-                {showError()}
-                {showSuccess()}
-            </div>
+            {/* <div className="pt-3">
+                
+            </div> */}
         </div>
 
         <div className="col-md-4">
             <div>
                 <div className="form-group pb-2">
-                    <h5>Featured image</h5>
+                    <span style={nameStyle2}>รูปสัตว์เลี้ยง / Featured image</span>
                     <hr />
 
-                    <small className="text-muted">Max size: 1mb</small>
-                    <label className="btn btn-outline-info">
-                        Upload featured image
+                    <small className="text-muted" style={{marginLeft: '20px'}}>Max size: 1mb</small>
+                    <br />
+                    <label className="btn btn-outline-info" style={{marginTop: '8px', marginLeft: '20px'}}> 
+                        {/* Upload featured image */}
+                        Profile photo
                         <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
                     </label>
+                    {/* <div>
+                        <img
+                            // src={`${API}/user/photo/${username}`}
+                            className="img img-fluid img-thumbnail mb-3"
+                            style={{ maxHeight: 'auto', maxWidth: '100%' }}
+                            alt="user profile"
+                        />
+                    </div> */}
+                    
                 </div>
             </div>
             <div>
-                <h5>Categories</h5>
+                <span style={nameStyle2}>ประเภทสัตว์เลี้ยง / Categories</span>
                 <hr />
-
-                <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showCategories()}</ul>
+                <ul style={radioStyle}>{showCategories()}</ul>
             </div>
+            <div>
+                {/* <div className="row"> */}
+                    <span style={nameStyle2}>เพศ / Gender</span>
+                        <select value={gender} onChange={handleChange('gender')} style={genderStyle}>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                {/* </div> */}
+            </div> 
+        </div>
+        <div className="container-create-form-btn" style={btnStyle}>
+            <button type="submit" className="btn btn-primary" style={buttonStyle}>
+                Create Pet
+            </button>
         </div>
     </div>
 </div>
 );
 };
 
+const radioStyle= {
+    maxHeight: '200px', 
+    overflowY: 'scroll',
+    color: 'black'
+};
+
+const containerStyle = {
+    width: '100%',
+    minHeight: '100vh',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    top: '0',
+    left: '0'
+};
+
+const createName = {
+    fontSize: '24px',
+    fontWeight: 'bold',
+    color: '#333333',
+    lineHeight: '1.2',
+    textAlign: 'center',
+    width: '100%',
+    display: 'block',
+    paddingBottom: '54px',
+    marginTop: '80px'
+};
+
+const nameStyle = {
+    src: 'url(../../../fonts/BANGNA-NEW.TTF)',
+    fontWeight: 'bold',
+    fontSize: '15px',
+    textAlign: 'left',
+    marginBottom: '15px'
+};
+
+const nameStyle2 = {
+    src: 'url(../../../fonts/BANGNA-NEW.TTF)',
+    fontWeight: 'bold',
+    fontSize: '15px',
+    textAlign: 'left',
+};
+
+const buttonStyle = {
+    backgroundColor: 'green',
+    border: 'none',
+    borderRadius: '25px',
+    height: '50px',
+    width: '20%',
+    margin: '0 auto',
+    marginTop: '40px'
+};
+
+const btnStyle = {
+    width: '100%',
+    display: '-webkit-box',
+    display: '-webkit-flex',
+    display: '-moz-box',
+    display: '-ms-flexbox',
+    display: 'flex',
+    flexWrap: 'wrap'
+};
+
+const inputCreate = {
+    fontSize: '15px',
+    lineHeight: '1.5',
+    color: '#666666',
+
+    display: 'block',
+    width: '100%',
+    background: '#e6e6e6',
+    height: '50px',
+    borderRadius: '25px',
+    padding: '0 30px 0 68px',
+    // marginTop: '20px',
+    outline: 'none',
+    border: 'none',
+    marginBottom: '25px'
+};
+
+const genderStyle = {
+    fontSize: '18px',
+    borderRadius: '25px',
+    border: 'none',
+    fontSize: '18px',
+    marginTop: '10px',
+    height: '35px',
+    width: '100%',
+    padding: '0 30px 0 68px',
+    background: '#e6e6e6',
+    color: '#666666',
+};
+
 export default withRouter(PetCreate);
+
