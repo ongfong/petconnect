@@ -19,11 +19,7 @@ const PetCreate = ({ router }) => {
     // };
 
     const [categories, setCategories] = useState([]);
-
     const [checked, setChecked] = useState([]); // categories
-
-    // [body, setBody] = useState(petFromLS());
-
     const [values, setValues] = useState({
         error: '',
         sizeError: '',
@@ -48,6 +44,7 @@ const PetCreate = ({ router }) => {
         getCategories().then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
+                console.log(data.error);
             } else {
                 setCategories(data);
             }
@@ -76,7 +73,6 @@ const PetCreate = ({ router }) => {
 
     const handleToggle = c => () => {
         setValues({ ...values, error: '' });
-        // return the first index or -1
         const clickedCategory = checked.indexOf(c);
         const all = [...checked];
 
@@ -119,7 +115,6 @@ const PetCreate = ({ router }) => {
             <div className="col-md-12 offset-md-0">
             <form onSubmit={publishPet}>
                 <div className="form-group">
-                    {/* <label className="text-muted" style={nameStyle}>ID</label> */}
                     <label style={nameStyle}>รหัสแท็ก / ID</label>
                     <input
                         value={id} 
@@ -149,90 +144,43 @@ const PetCreate = ({ router }) => {
                         style={inputCreate}
                     />
                 </div>
-                {/* <div className="form-group">
-                    <select value={gender} onChange={handleChange('gender')}>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div> */}
-                {/* <div>
-                        <label style={genderStyle}>Gender</label>
-                        <select value={gender} onChange={handleChange('gender')}>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                </div> */}
-                {/* <div className="container-create-form-btn" style={btnStyle}>
-                    <button type="submit" className="btn btn-primary btn-block" style={buttonStyle}>
-                        Create Pet
-                    </button>
-                </div> */}
+                <button type="submit" className="btn btn-primary">
+                        Create 
+                </button>
             </form>
             </div>
         );
     };
 
    return (
-    <div className="container-fluid"style={containerStyle}>
-    <div className="row" >
-        <span className="create-form-title" style={createName}>
-            Create a new pet
-		</span>
-        <div className="col-md-6 offset-md-1">
-            {showError()}
-            {showSuccess()}
-            {createPetForm()}
-            {/* <div className="pt-3">
-                
-            </div> */}
-        </div>
+    <div className="container-fluid">
+    <div className="row">
+        <div className="col-md-8">
+        {createPetForm()}
+            <div className="pt-3">
+                {showError()}
+                {showSuccess()}
+            </div>
+             </div>
 
-        <div className="col-md-4">
-            <div>
-                <div className="form-group pb-2">
-                    <span style={nameStyle2}>รูปสัตว์เลี้ยง / Featured image</span>
-                    <hr />
-
-                    <small className="text-muted" style={{marginLeft: '20px'}}>Max size: 1mb</small>
-                    <br />
-                    <label className="btn btn-outline-info" style={{marginTop: '8px', marginLeft: '20px'}}> 
-                        {/* Upload featured image */}
-                        Profile photo
+<div className="col-md-4">
+    <div>
+        <div className="form-group pb-2">
+            <h5>Featured image</h5>
+            <small className="text-muted">Max size: 1mb</small>
+                    <label className="btn btn-outline-info">
+                        Upload featured image
                         <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
                     </label>
-                    {/* <div>
-                        <img
-                            // src={`${API}/user/photo/${username}`}
-                            className="img img-fluid img-thumbnail mb-3"
-                            style={{ maxHeight: 'auto', maxWidth: '100%' }}
-                            alt="user profile"
-                        />
-                    </div> */}
-                    
-                </div>
+                    </div>
             </div>
-            <div>
-                <span style={nameStyle2}>ประเภทสัตว์เลี้ยง / Categories</span>
-                <hr />
-                <ul style={radioStyle}>{showCategories()}</ul>
+            <div></div>
+            <h5>Categories</h5>
+            <hr />
+            <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showCategories()}</ul>
             </div>
-            <div>
-                {/* <div className="row"> */}
-                    <span style={nameStyle2}>เพศ / Gender</span>
-                        <select value={gender} onChange={handleChange('gender')} style={genderStyle}>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                {/* </div> */}
-            </div> 
-        </div>
-        <div className="container-create-form-btn" style={btnStyle}>
-            <button type="submit" className="btn btn-primary" style={buttonStyle}>
-                Create Pet
-            </button>
-        </div>
+            </div>
     </div>
-</div>
 );
 };
 
@@ -310,7 +258,6 @@ const inputCreate = {
     height: '50px',
     borderRadius: '25px',
     padding: '0 30px 0 68px',
-    // marginTop: '20px',
     outline: 'none',
     border: 'none',
     marginBottom: '25px'

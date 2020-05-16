@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run watch:css && next",
-    "build": "npm run build:css && next build",
-    "start": "next start",
-    "build:css": "postcss assets/tailwind.css -o assets/main.css",
-    "watch:css": "postcss assets/tailwind.css -o assets/main.css"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "keywords": [],
   "author": "",

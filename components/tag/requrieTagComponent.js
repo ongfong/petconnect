@@ -74,7 +74,6 @@ const RequireTagComponent = () => {
 
                     {showError()}
                     {showLoading()}
-                    {showMessage()}
 
                     <p><strong>ผู้รับสินค้า/Consignee</strong></p>
 
@@ -192,9 +191,7 @@ const RequireTagComponent = () => {
 
     return (
         <React.Fragment>
-            {/* {showError()}
-            {showLoading()}
-            {showMessage()} */}
+            {showMessage()}
             {showForm && RequireTagForm()}
         </React.Fragment>
     );

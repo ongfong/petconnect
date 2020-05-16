@@ -2,7 +2,7 @@ import Layout from '../components/Layout';
 import LostListComponent from '../components/lost/LostListComponent';
 import Carousel from '../components/UI/Carousel/Carousel';
 import Cards from '../components/UI/Card/Card';
-import '../assets/'
+
 const Index = () => {
     return (
         <Layout>
