@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md" >
+      <Navbar color="light" light expand="md" fixed="top">
         <Link href="/">
           <NavLink style={fontName}>{APP_NAME}</NavLink>
         </Link>
