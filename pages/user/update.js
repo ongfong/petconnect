@@ -23,7 +23,7 @@ const containerUpdate = {
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F6E0AE',
+    backgroundColor: '#f2f2f2',
     top: '0',
     left: '0'
 };

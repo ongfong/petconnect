@@ -80,6 +80,7 @@ const ProfilePetUpdate = ({ pet, router }) => {
                 });
             }
         });
+        window.location.reload();
     };
 
     const profilePetUpdateForm = () => (
@@ -120,7 +121,6 @@ const ProfilePetUpdate = ({ pet, router }) => {
                         <option value="หญิง / Female">หญิง / Female</option>
                 </select>
             </div>
-            <fieldset disabled>
             <div className="form-group">
                 <label style={nameStyle}>สายพันธุ์ / Breed</label>
                 <input 
@@ -131,8 +131,6 @@ const ProfilePetUpdate = ({ pet, router }) => {
                     style={inputUpdate}
                 />
             </div>
-            </fieldset>
-            <fieldset disabled>
             <div className="form-group">
                 <label style={nameStyle}>กรุ๊ปเลือด / Blood</label>
                 <input 
@@ -143,7 +141,6 @@ const ProfilePetUpdate = ({ pet, router }) => {
                     style={inputUpdate}
                 />
             </div>
-            </fieldset>
             <div className="form-group">
                 <label style={nameStyle}>น้ำหนัก / Weight</label>
                 <input 
