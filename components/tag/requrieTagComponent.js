@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { requiretag } from '../../actions/tag';
-import Router from 'next/router';
 
 const RequireTagComponent = () => {
     const [values, setValues] = useState({
@@ -25,7 +24,6 @@ const RequireTagComponent = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        // console.table({ name, email, password, error, loading, message, showForm });
         setValues({ ...values, loading: true, error: false });
         const tag = { name, email, houseNumber, village, road, alley, district, zone, 
             province, postalCode };
@@ -61,7 +59,7 @@ const RequireTagComponent = () => {
     
     const showLoading = () => (loading ? <div className="alert alert-info">Loading...</div> : '');
     const showError = () => (error ? <div className="alert alert-danger">{error}</div> : '');
-    const showMessage = () => (message ? <div className="alert alert-info">{message}</div> : '');
+    const showMessage = () => (message ? <div className="alert alert-success">{message}</div> : '');
 
     const RequireTagForm = () => {
         return (

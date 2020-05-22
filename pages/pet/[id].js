@@ -80,7 +80,6 @@ const ProfilePetUpdate = ({ pet, router }) => {
                 });
             }
         });
-        window.location.reload();
     };
 
     const profilePetUpdateForm = () => (

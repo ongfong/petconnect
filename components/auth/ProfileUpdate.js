@@ -72,7 +72,6 @@ const ProfileUpdate = () => {
                 });
             }
         });
-        window.location.reload();
     };
 
     const profileUpdateForm = () => (
