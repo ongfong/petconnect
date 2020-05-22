@@ -55,83 +55,7 @@ const SigninComponent = () => {
 
     const signinForm = () => {
         return (
-            // <form onSubmit={handleSubmit}>
-                // <div className="form-group">Email
-                //     <input
-                //         value={email}
-                //         onChange={handleChange('email')}
-                //         type="email"
-                //         className="form-control"
-                //     />
-                // </div>
-
-            //     <div className="form-group">Password
-            //         <input
-            //             value={password}
-            //             onChange={handleChange('password')}
-            //             type="password"
-            //             className="form-control"
-            //         />
-            //     </div>
-
-            //     <div>
-            //         <button className="btn btn-primary btn-block">Signin</button>
-            //     </div>
-            // </form>
-
-
-
-        //     <div className="container-login100" style={container100}>
-		// 	        <div className="wrap-login100" style={wrap}>
-		// 		        <div className="login100-form-title" style={login100}>
-		// 			        <span className="login100-form-title-1" style={login11}>
-		// 				         Sign In
-		// 			        </span>
-		// 		        </div>
-
-		// 		<form style={login100Form} onSubmit={handleSubmit}>
-		// 			<div className="wrap-input100 validate-input m-b-26" data-validate="Username is required" style={wrapInput100}>
-		// 				<span style={label100}>Email</span>
-        //                     <input
-        //                         value={email}
-        //                         onChange={handleChange('email')}
-        //                         type="email"
-        //                         // className="form-control"
-        //                         placeholder="Type your email" 
-        //                         style={input100}>
-        //                     </input>         
-                                
-						// <span className="focus-input100" style={focusInput100}></span>
-		// 			</div>
-
-                    
-
-		// 			<div className="wrap-input100 validate-input m-b-18" data-validate = "Password is required" style={wrapInput100}>
-						// <span style={label100}>Password</span>
-                        //     <input 
-                        //         value={password}
-                        //         onChange={handleChange('password')}
-                        //         type="password"  
-                        //         placeholder="Type your password" 
-                        //         // className="form-control"
-                        //         style={input100}>
-                        //     </input>
-		// 				<span className="focus-input100" style={focusInput100}></span>
-		// 			</div>
-            
-        //             <Link href="/auth/password/forgot">
-        //                 <a className="btn btn-outline-danger btn-sm" style={forgotStyle}>Forgot Password?</a>
-        //             </Link>
-		// 			{/* </div> */}
-                    
-		// 			<div className="container-login100-form-btn" style={btnStyle}>
-        //                 <button className="btn btn-primary btn-block" style={buttonStyle}>Sign in</button>
-		// 			</div>
-		// 		</form>
-		// 	</div>
-        // </div>
-
-		<div className="container-login" style={containerLogin} onSubmit={handleSubmit}> 
+  		<div className="container-login" style={containerLogin} onSubmit={handleSubmit}> 
 				<form className="col-md-5 offset-md-0" >
 					<span className="login-form-title" style={loginName}>
 						Sign In
@@ -197,7 +121,7 @@ const loginTitle = {
 
 const containerLogin = {
     width: '100%',
-    minHeight: '100vh',
+    minHeight: '105vh',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
@@ -205,7 +129,6 @@ const containerLogin = {
     backgroundImage: "url(https://image.freepik.com/free-photo/pomeranian-dog-with-yellow-background_63176-591.jpg)",
     backgroundSize: '100% 100%',
     backgroundPosition: 'center',
-   
 };
 
 const loginName = {

@@ -54,7 +54,6 @@ const ForgotPassword = () => {
         <Layout>
             <div className="container-fluid" style={containerForgot}>
                 <h2 style={forgotStyle}>Forgot password</h2>
-                {/* <hr /> */}
                 {showError()}
                 {showMessage()}
                 {showForm && passwordForgotForm()}
@@ -69,8 +68,8 @@ const containerForgot = {
     justifyContent: 'center',
     alignItems: 'center',
     background: '#e4b660',
-    background: '-webkit-linear-gradient(-135deg, #ffd954, #f2ab39)',
-    background: 'linear-gradient(-135deg, #ffd954, #f2ab39)',
+    background: '#f2f2f2',
+    paddingTop: '80px',
     top: '0',
     left: '0'
 };

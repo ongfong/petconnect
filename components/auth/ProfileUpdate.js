@@ -72,6 +72,7 @@ const ProfileUpdate = () => {
                 });
             }
         });
+        window.location.reload();
     };
 
     const profileUpdateForm = () => (
@@ -83,6 +84,7 @@ const ProfileUpdate = () => {
                     <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
                 </label>
             </div>
+            <fieldset disabled>
             <div className="form-group">
                 <label style={nameStyle}>ชื่อผู้ใช้ / Username</label>
                 <input 
@@ -93,6 +95,7 @@ const ProfileUpdate = () => {
                     style={inputUpdate}
                 />
             </div>
+            </fieldset>
             <div className="form-group">
                 <label style={nameStyle}>ชื่อเจ้าของสัตว์เลี้ยง / Name</label>
                 <input 
@@ -103,6 +106,7 @@ const ProfileUpdate = () => {
                     style={inputUpdate}
                 />
             </div>
+            <fieldset disabled>
             <div className="form-group">
                 <label style={nameStyle}>อีเมล์ / Email</label>
                 <input 
@@ -113,6 +117,7 @@ const ProfileUpdate = () => {
                     style={inputUpdate}
                 />
             </div>
+            </fieldset>
             <div className="form-group">
                 <label style={nameStyle}>เบอร์โทรศัพท์ / Phone</label>
                 <input 
@@ -162,13 +167,13 @@ const ProfileUpdate = () => {
 
     return (
         <React.Fragment>
-            <div className="container">
+            <div className="container" style={{paddingTop: '80px'}}>
                 <div className="row">
-                    <div className="col-md-4" style={{marginTop: '30px'}}>
+                    <div className="col-md-4">
                         <img
                             src={`${API}/user/photo/${username}`}
                             className="img img-fluid img-thumbnail mb-3"
-                            style={{ maxHeight: 'auto', maxWidth: '100%' }}
+                            style={{ maxHeight: 'auto', maxWidth: '100%', marginTop: '23px' }}
                             alt="user profile"
                         />
                     </div>
@@ -187,7 +192,6 @@ const ProfileUpdate = () => {
 
 const profileProtoStyle = {
     cursor: 'pointer',
-    marginTop: '9px'
 };
 
 const nameStyle = {

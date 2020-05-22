@@ -115,7 +115,7 @@ const PetCreate = ({ router }) => {
             <div className="col-md-12 offset-md-0">
             <form onSubmit={publishPet}>
                 <div className="form-group">
-                    <label style={nameStyle}>รหัสแท็ก / ID</label>
+                    <label style={nameStyle}>รหัสแท็ก / ID *</label>
                     <input
                         value={id} 
                         onChange={handleChange('id')}
@@ -125,7 +125,7 @@ const PetCreate = ({ router }) => {
                     />
                 </div>
                 <div className="form-group">
-                    <label style={nameStyle}>Pinแท็ก / Pin</label>
+                    <label style={nameStyle}>Pinแท็ก / Pin *</label>
                     <input 
                         value={pin}
                         onChange={handleChange('pin')} 
@@ -135,7 +135,7 @@ const PetCreate = ({ router }) => {
                     />
                 </div>
                 <div className="form-group">
-                    <label style={nameStyle}>ชื่อสัตว์เลี้ยง / Name</label>
+                    <label style={nameStyle}>ชื่อสัตว์เลี้ยง / Name *</label>
                     <input 
                         value={name} 
                         onChange={handleChange('name')} 
@@ -145,7 +145,7 @@ const PetCreate = ({ router }) => {
                     />
                 </div>
                 <button type="submit" className="btn btn-primary" style={buttonStyle}>
-                        Create 
+                    Create 
                 </button>
             </form>
             </div>
@@ -177,7 +177,7 @@ const PetCreate = ({ router }) => {
                     </div>
             </div>
             <div>
-                <span style={nameStyle}>Categories</span>
+                <span style={nameStyle}>ประเภทสัตว์เลี้ยง / Categories *</span>
                 <hr />
                 <ul style={radioStyle}>{showCategories()}</ul>
             </div>
@@ -207,9 +207,9 @@ const containerStyle = {
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#f2f2f2',
     top: '0',
-    left: '0'
-
+    left: '0',
 };
 
 const createName = {
@@ -221,7 +221,7 @@ const createName = {
     width: '100%',
     display: 'block',
     paddingBottom: '54px',
-    marginTop: '80px'
+    marginTop: '100px'
 };
 
 const nameStyle = {
@@ -237,9 +237,10 @@ const buttonStyle = {
     border: 'none',
     borderRadius: '25px',
     height: '50px',
-    width: '20%',
+    width: '30%',
+    display: 'block',
     margin: '0 auto',
-    marginTop: '30px'
+    marginTop: '30px',
 };
 
 const inputCreate = {

@@ -49,7 +49,7 @@ const SignupComponent = () => {
 
     const showLoading = () => (loading ? <div className="alert alert-info">Loading...</div> : '');
     const showError = () => (error ? <div className="alert alert-danger">{error}</div> : '');
-    const showMessage = () => (message ? <div className="alert alert-info">{message}</div> : '');
+    const showMessage = () => (message ? <div className="alert alert-info" style={{marginTop: '80px', display: 'flex'}}>{message}</div> : '');
 
     const signupForm = () => {
         return (
@@ -96,23 +96,22 @@ const SignupComponent = () => {
 
     return (
         <React.Fragment>
-        {showMessage()}
-        {showForm && signupForm()}
+            {showMessage()}
+            {showForm && signupForm()}
     </React.Fragment>
     );
 };
 
 const containerSignup = {
-    width: '100%',
-    minHeight: '100vh',
+    width: '102%',
+    minHeight: '105vh',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(https://image.freepik.com/free-photo/pomeranian-dog-with-yellow-background_63176-592.jpg)',
+    backgroundImage: "url(https://image.freepik.com/free-photo/pomeranian-dog-with-yellow-background_63176-592.jpg)",
     backgroundSize: '100% 100%',
-    top: '0',
-    left: '0'
+    backgroundPosition: 'center',
 };
 
 const signupTitle = {

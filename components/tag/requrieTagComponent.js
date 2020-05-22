@@ -70,12 +70,12 @@ const RequireTagComponent = () => {
 					<span className="request-form-title" style={requestTagName}>
 						Request Tag
 					</span>
-                    <p><strong>ข้อมูลการจัดส่ง/Delivery information</strong></p>
-
+                    
                     {showError()}
                     {showLoading()}
-
-                    <p><strong>ผู้รับสินค้า/Consignee</strong></p>
+                    
+                    <p><strong>ข้อมูลการจัดส่ง / Delivery information</strong></p>
+                    <p><strong>ผู้รับสินค้า / Consignee</strong></p>
 
                     <div className="form-group">
                     <input
@@ -83,7 +83,7 @@ const RequireTagComponent = () => {
                         onChange={handleChange('name')}
                         type="text"
                         className="form-control"
-                        placeholder="ชื่อ/name"
+                        placeholder="ชื่อ / name"
                         style={inputRequest}
                     />
                     </div>
@@ -94,13 +94,13 @@ const RequireTagComponent = () => {
                             onChange={handleChange('email')}
                             type="email"
                             className="form-control"
-                            placeholder="อีเมล์/email"
+                            placeholder="อีเมล์ / email"
                             style={inputRequest}
                         />
                     </div>
                 
                <div>
-                   <p><strong>ที่อยู่การจัดส่ง/Delivery address</strong></p>
+                   <p><strong>ที่อยู่การจัดส่ง / Delivery address</strong></p>
                 <div className="row">
                         <div className="col-md-6">
                             <div className="form-group">
@@ -109,7 +109,7 @@ const RequireTagComponent = () => {
                                     onChange={handleChange('houseNumber')}
                                     type="text"
                                     className="form-control"
-                                    placeholder="บ้านเลขที่/house number"
+                                    placeholder="บ้านเลขที่ / house number"
                                     style={inputRequest}
                                 />
                             </div>
@@ -122,7 +122,7 @@ const RequireTagComponent = () => {
                                     onChange={handleChange('village')}
                                     type="text"
                                     className="form-control"
-                                    placeholder="ซอย/village"
+                                    placeholder="ซอย / village"
                                     style={inputRequest}
                                 />
                             </div>
@@ -135,7 +135,7 @@ const RequireTagComponent = () => {
                             onChange={handleChange('road')}
                             type="text"
                             className="form-control"
-                            placeholder="ถนน/road"
+                            placeholder="ถนน / road"
                             style={inputRequest}
                         />
                     </div>
@@ -145,7 +145,7 @@ const RequireTagComponent = () => {
                             onChange={handleChange('district')}
                             type="text"
                             className="form-control"
-                            placeholder="ตำบล แขวง/district"
+                            placeholder="แขวง / district"
                             style={inputRequest}
                         />
                     </div>
@@ -155,7 +155,7 @@ const RequireTagComponent = () => {
                             onChange={handleChange('zone')}
                             type="text"
                             className="form-control"
-                            placeholder="เขต/zone"
+                            placeholder="เขต / zone"
                             style={inputRequest}
                         />
                     </div>
@@ -165,7 +165,7 @@ const RequireTagComponent = () => {
                             onChange={handleChange('province')}
                             type="text"
                             className="form-control"
-                            placeholder="จังหวัด/province"
+                            placeholder="จังหวัด / province"
                             style={inputRequest}
                         />
                     </div>
@@ -175,7 +175,7 @@ const RequireTagComponent = () => {
                             onChange={handleChange('postalCode')}
                             type="text"
                             className="form-control"
-                            placeholder="รหัสไปรษณีย์/postalcode"
+                            placeholder="รหัสไปรษณีย์ / postalcode"
                             style={inputRequest}
                         />
                     </div>
@@ -204,7 +204,8 @@ const containerRequestTag = {
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    background: '#F6E0AE',
+    background: '#f2f2f2',
+    marginTop: '50px',
     top: '0',
     left: '0'
 
@@ -220,7 +221,7 @@ const requestTagName = {
     width: '100%',
     display: 'block',
     paddingBottom: '54px',
-    marginTop: '60px'
+    marginTop: '50px'
 };
 
 const inputRequest = {
@@ -242,7 +243,8 @@ const buttonStyle = {
     display: 'block',
     backgroundColor: 'green',
     margin: '0 auto',
-    marginTop: '20px',
+    marginTop: '5%',
+    marginBottom: '5%',
     border: 'none',
     borderRadius: '25px',
     height: '50px',

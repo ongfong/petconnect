@@ -7,35 +7,12 @@ import { listPets, removePet, lost, find } from '../../actions/pet';
 import moment from 'moment';
 import { API } from '../../config';
 import Link from 'next/link';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    Nav,
-    NavItem,
-    NavLink,
-    Container
-} from 'reactstrap';
 
 const ListPets = ({ pets, query }) => {
 
     const [pet, setPets] = useState([]);
     const [message, setMessage] = useState('');
     const token = getCookie('token');
-
-    // const loadPets = () => {
-    //     listPets(query.user).then(data => {
-    //         if (data.error) {
-    //             console.log(data.error);
-    //         } else {
-    //             setPets(data);
-    //         }
-    //     });
-    // };
-
-    // useEffect(() => {
-    //     loadPets();
-    // }, []);
 
     const deletePet = id => {
         removePet(id, token).then(data => {

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-import Router from 'next/router';
 import { listLostPets } from '../../actions/pet';
 import moment from 'moment';
 import { API } from '../../config';
