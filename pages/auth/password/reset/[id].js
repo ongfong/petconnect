@@ -29,7 +29,7 @@ const ResetPassword = ({ router }) => {
     };
 
     const passwordResetForm = () => (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
             <div className="form-group pt-5">
                 <input
                     type="password"
@@ -38,10 +38,11 @@ const ResetPassword = ({ router }) => {
                     value={newPassword}
                     placeholder="Type new password"
                     required
+                    style={inputStyle}
                 />
             </div>
             <div>
-                <button className="btn btn-primary">Change password</button>
+                <button className="btn btn-primary" style={buttonStyle}>Change password</button>
             </div>
         </form>
     );
@@ -51,15 +52,40 @@ const ResetPassword = ({ router }) => {
 
     return (
         <Layout>
-            <div className="container">
-                <h2>Reset password</h2>
-                <hr />
+            <div className="container" style={{paddingTop: '80px'}}>
+                <h2 style={{paddingTop: '80px', textAlign: 'center'}}>Reset password</h2>
                 {showError()}
                 {showMessage()}
                 {passwordResetForm()}
             </div>
         </Layout>
     );
+};
+
+const inputStyle = {
+    fontSize: '15px',
+    lineHeight: '1.5',
+    color: '#666666',
+    display: 'block',
+    width: '70%',
+    background: '#e6e6e6',
+    height: '50px',
+    borderRadius: '25px',
+    padding: '0 30px 0 68px',
+    outline: 'none',
+    border: 'none',
+    margin: '0 auto',
+};
+
+const buttonStyle = {
+    width: '30%',
+    height: '50px',
+    backgroundColor: 'blue',
+    border: 'none',
+    borderRadius: '25px',
+    margin: '0 auto',
+    display: 'block',
+    backgroundColor: '#0384BD',  
 };
 
 export default withRouter(ResetPassword);

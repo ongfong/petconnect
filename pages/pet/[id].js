@@ -120,6 +120,7 @@ const ProfilePetUpdate = ({ pet, router }) => {
                         <option value="หญิง / Female">หญิง / Female</option>
                 </select>
             </div>
+            <fieldset disabled>
             <div className="form-group">
                 <label style={nameStyle}>สายพันธุ์ / Breed</label>
                 <input 
@@ -130,6 +131,8 @@ const ProfilePetUpdate = ({ pet, router }) => {
                     style={inputUpdate}
                 />
             </div>
+            </fieldset>
+            <fieldset disabled>
             <div className="form-group">
                 <label style={nameStyle}>กรุ๊ปเลือด / Blood</label>
                 <input 
@@ -140,6 +143,7 @@ const ProfilePetUpdate = ({ pet, router }) => {
                     style={inputUpdate}
                 />
             </div>
+            </fieldset>
             <div className="form-group">
                 <label style={nameStyle}>น้ำหนัก / Weight</label>
                 <input 
@@ -193,7 +197,7 @@ const ProfilePetUpdate = ({ pet, router }) => {
         <div className="container-fluid" style={containerUpdate}>
          <div className="container">
             <div className="row">
-                <div className="col-md-4" style={{marginTop: '30px'}}>
+                <div className="col-md-4" style={{marginTop: '80px'}}>
                     <img
                         src={`${API}/pets/photo/${pet.id}`}
                         className="img img-fluid img-thumbnail mb-3"
@@ -201,7 +205,7 @@ const ProfilePetUpdate = ({ pet, router }) => {
                         alt="user profile"
                     />
                 </div>
-                <div className="col-md-8 mb-5">
+                <div className="col-md-8 mb-5" style={{marginTop: '60px'}}>
                     <br />
                     {showSuccess()}
                     {showError()}
@@ -229,7 +233,6 @@ ProfilePetUpdate.getInitialProps = ({ query }) => {
 
 const profileProtoStyle = {
     cursor: 'pointer',
-    marginTop: '9px'
 };
 
 const nameStyle = {
@@ -291,6 +294,7 @@ const containerUpdate = {
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#f2f2f2',
     top: '0',
     left: '0'
 };
