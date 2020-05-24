@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { requiretag } from '../../actions/tag';
+import Router from 'next/router';
 
 const RequireTagComponent = () => {
     const [values, setValues] = useState({
@@ -24,6 +25,7 @@ const RequireTagComponent = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        // console.table({ name, email, password, error, loading, message, showForm });
         setValues({ ...values, loading: true, error: false });
         const tag = { name, email, houseNumber, village, road, alley, district, zone, 
             province, postalCode };
@@ -59,15 +61,15 @@ const RequireTagComponent = () => {
     
     const showLoading = () => (loading ? <div className="alert alert-info">Loading...</div> : '');
     const showError = () => (error ? <div className="alert alert-danger">{error}</div> : '');
-    const showMessage = () => (message ? <div className="alert alert-success">{message}</div> : '');
+    const showMessage = () => (message ? <div className="alert alert-info" style={{marginTop: '80px'}}>{message}</div> : '');
 
     const RequireTagForm = () => {
         return (
             <div className="container-request" style={containerRequestTag} onSubmit={handleSubmit}> 
-				<form className="col-md-5 offset-md-0">
-					<span className="request-form-title" style={requestTagName}>
-						Request Tag
-					</span>
+    <form className="col-md-5 offset-md-0">
+     <span className="request-form-title" style={requestTagName}>
+      Request Tag
+     </span>
                     
                     {showError()}
                     {showLoading()}
@@ -178,19 +180,21 @@ const RequireTagComponent = () => {
                         />
                     </div>
                </div>
-					
+     
                     <div className="container-request-form-btn">
                          <button className="btn btn-primary" style={buttonStyle}>Request Tag</button>
-		 			</div>
-				</form>
-			</div>
+      </div>
+    </form>
+   </div>
         );
     };
 
     return (
         <React.Fragment>
-            {showMessage()}
-            {showForm && RequireTagForm()}
+            <div>
+                {showMessage()}
+                {showForm && RequireTagForm()}
+            </div>
         </React.Fragment>
     );
 };
@@ -241,8 +245,7 @@ const buttonStyle = {
     display: 'block',
     backgroundColor: 'green',
     margin: '0 auto',
-    marginTop: '5%',
-    marginBottom: '5%',
+    marginTop: '20px',
     border: 'none',
     borderRadius: '25px',
     height: '50px',

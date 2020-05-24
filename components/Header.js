@@ -46,13 +46,8 @@ const Header = () => {
                 </NavItem>
               </React.Fragment>
             )}
-
             {isAuth() && isAuth().role === 0 && (
               <NavItem>
-                 {/* <Link href = {`/user/${isAuth()._id}`}>
-                    <NavLink style={NavStyleRight1}>{`${isAuth().name}`}</NavLink>
-                 </Link> */}
-              
                 <UncontrolledDropdown>
                   <DropdownToggle tag="a" className="nav-link" caret  style={NavStyleRight1}>
                     {`${isAuth().name}`}
@@ -65,23 +60,6 @@ const Header = () => {
                 </UncontrolledDropdown>
               </NavItem>
             )}
-
-            {/* {isAuth() && isAuth().role === 0 && (
-              <NavItem>
-                 <Link href = "/user/crud/pet">
-                    <NavLink style={NavStyleRight1}>Create Pet</NavLink>
-                 </Link>
-              </NavItem>
-            )}
-
-            {isAuth() && isAuth().role === 0 && (
-              <NavItem>
-                 <Link href = "/user/update">
-                    <NavLink style={NavStyleRight1}>Update Profile</NavLink>
-                 </Link>
-              </NavItem>
-            )} */}
-          
             {isAuth() && isAuth().role === 1 && (
               <NavItem>
                 <Link href = "/admin">

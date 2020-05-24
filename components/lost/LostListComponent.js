@@ -42,46 +42,98 @@ const LostListComponent = () => {
         }
     
         return pets.map((pet, i) => {
-            console.log(pet.gender);
             return (
-                <section style={post} key={pet.id}>
-                    <div style={style}>
-                        <div key={i}>
-                            <div className="row">
-                                <div className="col-md-4">
-                                    <section>
-                                        <img className="img img-fluid"
-                                            style={{ maxHeight: '150px', width: 'auto' }}
-                                            src={`${API}/pets/photo/${pet.id}`}
-                                            alt={pet.name}/>
-                                    </section>
-                                </div>
-                                <div className="col-md-8">
-                                    <div style={{padding: '20px'}}>
-                                        <h4 style={{color:'#FC7139'}}>ID: {pet.id}</h4>
-                                        <p>Category: <strong>{pet.categories[0].name}</strong></p>
-                                        <p>Name: <strong>{pet.name}</strong></p>
-                                        <p>Breed: <strong>{pet.breed}</strong></p>
-                                        <p>Gender: <strong>{pet.gender}</strong></p>
-                                        Post by <strong>{pet.postedBy.name} </strong> | Lost on <strong>{moment(pet.updatedAt).fromNow()}</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div className="col-md-4" key={i}>
+                    <div className="card fixed-width" style={{width: '18rem'}}>
+                     <img 
+                        className="card-img-top"
+                        style={imgStyle}
+                        src={`${API}/pets/photo/${pet.id}`} 
+                        alt={pet.name} />
+                    <div class="card-body">
+                        <h4 style={{color:'#FC7139'}}>ID: {pet.id}</h4>
+                        <p class="card-text">Category: <strong>{pet.categories[0].name}</strong></p>
+                        <p class="card-text">Name: <strong>{pet.name}</strong></p>
+                        <p class="card-text">Breed: <strong>{pet.breed}</strong></p>
+                        <p class="card-text">Gender: <strong>{pet.gender}</strong></p>
+                        Post by <strong>{pet.postedBy.name} </strong> | Lost on <strong>{moment(pet.updatedAt).fromNow()}</strong>
                     </div>
-                </section>
+                </div>
+                </div>
+
+                // <div className="col-md-4" key={i}>
+                //      <div className="card" style={serviceItem}>
+                //         <img 
+                //             className="card-img-top" 
+                //             // style={{ maxHeight: '20%', width: 'auto' }}
+                //             style={imgStyle}
+                //             src={`${API}/pets/photo/${pet.id}`} 
+                //             alt={pet.name} />
+
+                //             <h4 style={{color:'#FC7139'}}>ID: {pet.id}</h4>
+                //             <p class="card-text">Category: <strong>{pet.categories[0].name}</strong></p>
+                //             <p class="card-text">Name: <strong>{pet.name}</strong></p>
+                //             <p class="card-text">Breed: <strong>{pet.breed}</strong></p>
+                //             <p class="card-text">Gender: <strong>{pet.gender}</strong></p>
+                //             Post by <strong>{pet.postedBy.name} </strong> | Lost on <strong>{moment(pet.updatedAt).fromNow()}</strong>
+                //     </div>
+                // </div>
+
+
+                // <section style={post} key={pet.id}>
+                //     <div style={style}>
+                //         <div key={i}>
+                //             <div className="row">
+                //                 <div className="col-md-4">
+                //                     <section>
+                //                         <img className="img img-fluid"
+                //                             style={{ maxHeight: '150px', width: 'auto' }}
+                //                             src={`${API}/pets/photo/${pet.id}`}
+                //                             alt={pet.name}/>
+                //                     </section>
+                //                 </div>
+                //                 <div className="col-md-8">
+                //                     <div style={{padding: '20px'}}>
+                //                         <h4 style={{color:'#FC7139'}}>ID: {pet.id}</h4>
+                //                         <p>Category: <strong>{pet.categories[0].name}</strong></p>
+                //                         <p>Name: <strong>{pet.name}</strong></p>
+                //                         <p>Breed: <strong>{pet.breed}</strong></p>
+                //                         <p>Gender: <strong>{pet.gender}</strong></p>
+                //                         Post by <strong>{pet.postedBy.name} </strong> | Lost on <strong>{moment(pet.updatedAt).fromNow()}</strong>
+                //                     </div>
+                //                 </div>
+                //             </div>
+                //         </div>
+                //     </div>
+                // </section>
             );
         });
     };
     return (
         <React.Fragment>
-            <div>
+            <div className="container">
                 <h2 style={{textAlign: 'center', padding: '20px', color: '#FC7139'}}>Lost Pets!</h2>
-                <hr style={{width: '80%'}} />
-                {showAllLostPets()}
+                {/* <hr style={{width: '80%'}} /> */}
+                <div className="row">
+                    {showAllLostPets()}
+                </div>
             </div>
         </React.Fragment>
     );
 }
+
+const serviceItem = {
+    textAlign: 'center',
+    padding: '10px 10px 18px 10px',
+    background: '#ffffff',
+    boxShadow: '0px 10px 25px rgba(206, 206, 206, 0.5)',
+    marginBottom: '30px',
+};
+
+const imgStyle = {
+    height: '300px',
+    width: '100%',
+};
+
 
 export default LostListComponent;

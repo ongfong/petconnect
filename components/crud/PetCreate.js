@@ -157,7 +157,7 @@ const PetCreate = ({ router }) => {
     <div className="row" >
         <span className="create-form-title" style={createName}>
             Create a new pet
-  </span>
+        </span>
         <div className="col-md-6 offset-md-1">
             {showError()}
             {showSuccess()}
@@ -202,7 +202,7 @@ const radioStyle= {
 };
 
 const containerStyle = {
-    width: '100%',
+    width: '102%',
     minHeight: '100vh',
     flexWrap: 'wrap',
     justifyContent: 'center',

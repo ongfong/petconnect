@@ -2,17 +2,128 @@ import Layout from '../components/Layout';
 import LostListComponent from '../components/lost/LostListComponent';
 import Carousel from '../components/UI/Carousel/Carousel';
 import Cards from '../components/UI/Card/Card';
-
+import {
+  View,
+  MaterialIcons
+} from 'reactstrap';
 const Index = () => {
     return (
         <Layout>
             <Carousel />
             <div className="policy" style={policyStyle}>
-              <p style={fontStyle}>
-                We love my pets and we know important of pets to pet owner.
-              </p>
+              <h4 style={{textAlign: 'center'}}>
+                " We love my pets and we know important of pets to pet owner "
+              </h4>
             </div>
-                 <Cards />
+                 {/* <Cards /> */}
+            {/* <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="services-item" style={serviceItem}>
+                    <img 
+                      src="https://images.pexels.com/photos/1139793/pexels-photo-1139793.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
+                      style={imgStyle}/>
+                      <h3>Request Tag</h3>
+                      <p>1. Click Request Tag.</p>
+                      <p>2. fill information is name, email address.</p>
+                      <p>3. Pet-Connect will send tag for you.</p>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="services-item" style={serviceItem}>
+                    <img 
+                        src="https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                        style={imgStyle} />
+                        <h3>Register Tag</h3>
+                        <p>1. Click Create Pet.</p>
+                        <p>2. Add information by ID and Pin get from Email.</p>
+                        <p>3. Your pet created by pet owner can inform when lost, find and delete.</p>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="services-item" style={serviceItem}>
+                    <img 
+                        src="https://images.pexels.com/photos/3884376/pexels-photo-3884376.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        style={imgStyle2}/>
+                        <h3>Update Profile</h3>
+                        <p>1. Click Update Profile.</p>
+                        <p>2. Fill information that want to edit profile.</p>
+                        <p>3. Click submit then information was updated.</p>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="services-item" style={serviceItem}>
+                    <img 
+                        src="https://images.pexels.com/photos/1346086/pexels-photo-1346086.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                        style={imgStyle2}/>
+                          <h3>Inform when found pet lost</h3>
+                          <p>1. Scan QR Code that attached to the collar.</p>
+                          <p>2. See information of pet lost..</p>
+                          <p>Thank you for help pet :D</p>
+                  </div>
+              </div>
+            </div> */}
+
+            <div className="container-fluid" style={{backgroundColor: '#f2f2f2', paddingBottom: '20px'}}>
+            <section className="item-category-area section-gap">
+              <div className="container">
+                <div className="row d-flex justify-content-center">
+                  <div className="col-md-12 pb-80 header-text text-center">
+                    <h1 className="pb-10" style={{paddingTop: '50px', paddingBottom: '50px'}}>HOW TO</h1>
+                  </div>
+                </div>
+              <div className="row">
+                <div className="col-lg-3 col-md-6">
+                  <div className="single-cat-item" style={itemStyle}>
+                      <img className="img-fluid" 
+                        src="https://images.pexels.com/photos/667228/pexels-photo-667228.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" 
+                        style={imgHowtoStyle} />
+                    <h4 style={h4Style}>Request Tag</h4>
+                    <p style={pHowtoStyle}>1. Click Request Tag.</p>
+                    <p style={pHowtoStyle}>2. fill information is name, email address.</p>
+                    <p style={pHowtoStyle}>3. Pet-Connect will send tag for you.</p>
+                  </div>
+                </div>
+                <div className="col-lg-3 col-md-6" >
+                  <div className="single-cat-item">
+                      <img className="img-fluid" 
+                      src="https://images.pexels.com/photos/936317/pexels-photo-936317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
+                      style={imgHowtoStyle} />
+                    <h4 style={h4Style}>Register Tag</h4>
+                    <p style={pHowtoStyle}>1. Click Create Pet.</p>
+                    <p style={pHowtoStyle}>2. Add information by ID and Pin get from Email.</p>
+                    <p style={pHowtoStyle}>3. Your pet created by pet owner can inform when lost, find and delete.</p>
+                  </div>
+                </div>
+                <div className="col-lg-3 col-md-6">
+                  <div className="single-cat-item">
+                      <img className="img-fluid" 
+                      src="https://images.pexels.com/photos/582070/pexels-photo-582070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
+                      style={imgHowtoStyle}/>
+                    <h4 style={h4Style}>Update Profile</h4>
+                    <p style={pHowtoStyle}>1. Click Update Profile.</p>
+                    <p style={pHowtoStyle}>2. Fill information that want to edit profile.</p>
+                    <p style={pHowtoStyle}>3. Click submit then information was updated.</p>
+                  </div>
+                </div>
+                <div className="col-lg-3 col-md-6">
+                  <div className="single-cat-item">
+                    <div className="thumb">
+                      <img className="img-fluid" 
+                      src="https://images.pexels.com/photos/4203280/pexels-photo-4203280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
+                      style={imgHowtoStyle}  />
+                    </div>
+                    <h4 style={h4Style}>Inform when found pet lost</h4>
+                    <p style={pHowtoStyle}>1. Scan QR Code that attached to the collar.</p>
+                    <p style={pHowtoStyle}>2. See information of pet lost..</p>
+                    <p style={pHowtoStyle}>Thank you for help pet :D</p>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </section>
+            </div>
+            
+
             <section className="how-petconnect-works" style={sectionStyle}>
               <h2 style={titleStyle}>How Pet-Connect Works</h2>
                 <ul style={ulStyle}>
@@ -39,6 +150,52 @@ const Index = () => {
             <LostListComponent></LostListComponent>
         </Layout>
     );
+};
+const serviceItem = {
+  textAlign: 'center',
+  padding: '10px 10px 18px 10px',
+  background: '#ffffff',
+  boxShadow: '0px 10px 25px rgba(206, 206, 206, 0.5)',
+  marginBottom: '30px',
+};
+
+const itemStyle = {
+  marginBottom: '30px', 
+  textAlign: 'left'
+};
+
+const imgStyle = {
+  marginBottom: '28px', 
+  minWidth: '100%', 
+  maxWidth: '100%', 
+  verticalAlign: 'middle', 
+  borderStyle: 'none'
+};
+
+const imgStyle2 = {
+  marginBottom: '28px', 
+  minWidth: '100%', 
+  maxWidth: '100%', 
+  verticalAlign: 'middle', 
+  borderStyle: 'none'
+};
+
+const imgHowtoStyle = {
+  borderRadius: '190px',
+  maxWidth: '100%',
+  height: 'auto',
+  verticalAlign: 'middle',
+  borderStyle: 'none',
+};
+
+const h4Style = {
+  fontSize: '20px',
+  textAlign: 'center',
+  paddingTop: '15px'
+};
+
+const pHowtoStyle = {
+  fontSize: '17px',
 };
 
 //policy
@@ -68,12 +225,15 @@ const fontStyle = {
 };
 
 const sectionStyle = {
-  backgroundSize: '120% 100%', 
-  padding: '10px 35px 35px',
+  // padding: '10px 35px 35px',
   textAlign: 'center',
   display: 'block',
+  padding: '5em 0',
   marginBottom: '50px',
-  marginTop: '50px',
+  // marginTop: '50px',
+  background: '-webkit-linear-gradient(-45deg, #FFB549 0%, #FDD086 100%)',
+  background: 'linear-gradient(135deg, #FFB549 0%, #FDD086 100%)',
+  // backgroundColor: '#f7f7f7'
 };
 
 const ulStyle = {
@@ -88,23 +248,24 @@ const titleStyle = {
   letterSpacing: '.1px',
   textAlign: 'center',
   lineHeight: '38px',
-  paddingBottom: '20px',
-  marginTop: '30px'
+  paddingBottom: '30px',
+  marginTop: '5px',
 };
 
 const h2Style = {
   fontWeight: 'bold',
-  fontSize: '22px',
+  fontSize: '26px',
   letterSpacing: '.1px',
   textAlign: 'center',
   lineHeight: '20px',
   marginBlockEnd: '19.92px',
-  marginBlockStart: '19.92px'
+  marginBlockStart: '19.92px',
+  paddingTop: '20px'
 };
 
 const pStyle = {
   color: '#000',
-  fontSize: '16px',
+  fontSize: '20px',
   textAlign: 'Center',
   letterSpacing: '.1px',
   lineHeight: '26px',

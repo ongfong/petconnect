@@ -4,13 +4,11 @@ import { withRouter } from 'next/router';
 import { getCookie } from '../../actions/auth';
 import Private from '../../components/auth/Private';
 import { listPets, removePet, lost, find } from '../../actions/pet';
-import moment from 'moment';
 import { API } from '../../config';
 import Link from 'next/link';
 
-const ListPets = ({ pets, query }) => {
+const ListPets = ({ pets }) => {
 
-    const [pet, setPets] = useState([]);
     const [message, setMessage] = useState('');
     const token = getCookie('token');
 
@@ -56,7 +54,6 @@ const ListPets = ({ pets, query }) => {
         let answer = window.confirm('Are you sure your pet lost? if sure when someone found your pet it will inform at email');
         if (answer) {
             lostPet(id);
-           
         }
     };
 
@@ -69,41 +66,23 @@ const ListPets = ({ pets, query }) => {
 
     const showAllPets = () => {
         return pets.map((pet, i) => {
-            return (
-                <div style={style}>
-                    <article key={i}>
-                    <div className="lead pb-4">
-                        <section>
-                            <p>The owner is {pet.postedBy.name} | Published {moment(pet.updatedAt).fromNow()}</p>
-                        </section>
-
-                        <div className="row">
-                            <div className="col-md-4">
-                                <section>
-                                    <img
-                                        className="img img-fluid"
-                                        style={{ maxHeight: '200px', width: 'auto' }}
-                                        src={`${API}/pets/photo/${pet.id}`}
-                                        alt={pet.name}/>
-                                </section>
-                                {/* <Link href={`/pet/${pet.id}`}>
-                                    <button type="submit" className="btn btn-primary" style={buttonStyle}>
+            return (                
+                    <div className="col-lg-4" key={i} style={{marginTop: '80px'}}>
+                        <div className="card fixed-width" style={{width: '18rem'}}>
+                            <img
+                                className="img img-fluid"
+                                style={{ height: '300px', width: '100%'}}
+                                src={`${API}/pets/photo/${pet.id}`}
+                                alt={pet.name}/>
+                            <div className="card-body">
+                                <div className="pb-3" style={nameStyle}>ID: <strong>{pet.id}</strong></div>
+                                <div className="pb-3" style={nameStyle}>Name: <strong>{pet.name}</strong></div>  
+                                <Link href={`/pet/${pet.id}`}>
+                                    <button type="submit" className="btn btn-primary pt-2" style={buttonUpdateStyle}>
                                         Update profile
                                     </button>
-                                    <a className="btn btn-primary pt-2" style={{marginTop: '20px'}}>Update profile</a>
-                                </Link> */}
-                            </div>
-                            <div className="col-md-8">
-                                <section>
-                                    <div className="pb-3" style={nameStyle}>ID: <strong>{pet.id}</strong></div>
-                                    <div className="pb-3" style={nameStyle}>Name: <strong>{pet.name}</strong></div>   
-                                    <Link href={`/pet/${pet.id}`}>
-                                        {/* <a className="btn btn-primary pt-2">Update profile</a> */}
-                                        <button type="submit" className="btn btn-primary pt-2" style={buttonUpdateStyle}>
-                                            Update profile
-                                        </button>
-                                    </Link>
-                                </section>
+                                </Link>
+                                <br />
                                 <button className="btn btn-warning btn-md" style={buttonLostStyle} onClick={() => lostConfirm(pet.id)} > 
                                         Lost
                                 </button>
@@ -117,8 +96,6 @@ const ListPets = ({ pets, query }) => {
                             </div>
                         </div>
                     </div>
-                </article>
-                </div>
             );
         });
     };
@@ -128,38 +105,11 @@ const ListPets = ({ pets, query }) => {
         <React.Fragment>
         <Layout>
             <Private> 
-                {/* <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-md-2">
-                            <ul class="list-group">
-                                <li className="list-group-item">
-                                    <a href="/user/crud/pet">Create Pets </a>
-                                </li>
-
-                                <li className="list-group-item">
-                                    <a href="/user/update">Update profile</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> */}
-                
-
-                {/* <Navbar expand="md" style={navStyle}>
-                    <Link href="/user/crud/pet">
-                        <NavLink style={createPetStyle}>Create Pets</NavLink>
-                    </Link>
-                    <Link href="/user/update">
-                        <NavLink style={updateProfileStyle}>Update profile</NavLink>
-                    </Link>
-                </Navbar> */}
             </Private>
-            <div className="container-fluid" style={containerStyle}>
+            <div className="container">
                 <div className="row">
-                    <div className="col-md-12">
                         {message && <div className="alert alert-warning">{message}</div>}
                         {showAllPets()}
-                    </div>
                 </div>
             </div>
         </Layout>
@@ -177,19 +127,8 @@ ListPets.getInitialProps = ({ query }) => {
         }
     });
 };
-
-const style = {
-    padding: '16px',
-    border: '1px solid #eee',
-    boxShadow: '0 2px 3px #ccc',
-    margin: '10px',
-    boxSizing: 'border-box',
-    backgroundColor: '#E6EAEC',
-}
-
 const nameStyle = {
-
-    src: 'url(../../../fonts/BANGNA-NEW.TTF)',
+    fontSize: '18px',
 };
 
 const buttonUpdateStyle = {
@@ -217,16 +156,6 @@ const buttonDeleteStyle = {
     backgroundColor: '#D92139',
     marginBottom: '5px',
     border: 'none',
-};
-
-const containerStyle = {
-    width: '100%',
-    minHeight: '100vh',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    top: '0',
-    left: '0'
 };
 
 export default withRouter(ListPets);
