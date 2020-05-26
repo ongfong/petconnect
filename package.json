@@ -24,10 +24,5 @@
     "react-google-login": "^5.1.2",
     "react-player": "^2.0.1",
     "reactstrap": "^8.4.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "^9.7.6",
-    "postcss-cli": "^7.1.1",
-    "tailwindcss": "^1.4.6"
   }
 }
