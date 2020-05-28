@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { withRouter } from 'next/router';
-import { getCookie } from '../../actions/auth';
-import { getCategories } from '../../actions/category';
-import { createPet } from '../../actions/pet';
+import {useState, useEffect} from 'react';
+import {withRouter} from 'next/router';
+import {getCookie} from '../../actions/auth';
+import {getCategories} from '../../actions/category';
+import {createPet} from '../../actions/pet';
 
-const PetCreate = ({ router }) => {
+const PetCreate = ({router}) => {
   // const petFromLS = () => {
   //     if (typeof window === 'undefined') {
   //         return false;
@@ -31,18 +31,18 @@ const PetCreate = ({ router }) => {
     hidePublishButton: false,
   });
 
-  const { error, success, formData, name, gender, id, pin } = values;
+  const {error, success, formData, name, gender, id, pin} = values;
   const token = getCookie('token');
 
   useEffect(() => {
-    setValues({ ...values, formData: new FormData() });
+    setValues({...values, formData: new FormData()});
     initCategories();
   }, [router]);
 
   const initCategories = () => {
     getCategories().then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error });
+        setValues({...values, error: data.error});
         console.log(data.error);
       } else {
         setCategories(data);
@@ -54,9 +54,14 @@ const PetCreate = ({ router }) => {
     e.preventDefault();
     createPet(formData, token).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error });
+        setValues({...values, error: data.error});
       } else {
-        setValues({ ...values, title: '', error: '', success: `A new pet id "${data.id}" is created` });
+        setValues({
+          ...values,
+          title: '',
+          error: '',
+          success: `A new pet id "${data.id}" is created`,
+        });
         setCategories([]);
       }
     });
@@ -65,11 +70,11 @@ const PetCreate = ({ router }) => {
   const handleChange = (name) => (e) => {
     const value = name === 'photo' ? e.target.files[0] : e.target.value;
     formData.set(name, value);
-    setValues({ ...values, [name]: value, formData, error: '' });
+    setValues({...values, [name]: value, formData, error: ''});
   };
 
   const handleToggle = (c) => () => {
-    setValues({ ...values, error: '' });
+    setValues({...values, error: ''});
     const clickedCategory = checked.indexOf(c);
     const all = [...checked];
 
@@ -96,13 +101,16 @@ const PetCreate = ({ router }) => {
   };
 
   const showError = () => (
-    <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
+    <div className="alert alert-danger" style={{display: error ? '' : 'none'}}>
       {error}
     </div>
   );
 
   const showSuccess = () => (
-    <div className="alert alert-success" style={{ display: success ? '' : 'none' }}>
+    <div
+      className="alert alert-success"
+      style={{display: success ? '' : 'none'}}
+    >
       {success}
     </div>
   );
@@ -113,15 +121,33 @@ const PetCreate = ({ router }) => {
         <form onSubmit={publishPet}>
           <div className="form-group">
             <label style={nameStyle}>รหัสแท็ก / ID *</label>
-            <input value={id} onChange={handleChange('id')} type="text" className="form-control" style={inputCreate} />
+            <input
+              value={id}
+              onChange={handleChange('id')}
+              type="text"
+              className="form-control"
+              style={inputCreate}
+            />
           </div>
           <div className="form-group">
             <label style={nameStyle}>Pinแท็ก / Pin *</label>
-            <input value={pin} onChange={handleChange('pin')} type="text" className="form-control" style={inputCreate} />
+            <input
+              value={pin}
+              onChange={handleChange('pin')}
+              type="text"
+              className="form-control"
+              style={inputCreate}
+            />
           </div>
           <div className="form-group">
             <label style={nameStyle}>ชื่อสัตว์เลี้ยง / Name *</label>
-            <input value={name} onChange={handleChange('name')} type="text" className="form-control" style={inputCreate} />
+            <input
+              value={name}
+              onChange={handleChange('name')}
+              type="text"
+              className="form-control"
+              style={inputCreate}
+            />
           </div>
           <button type="submit" className="btn btn-primary" style={buttonStyle}>
             Create
@@ -146,15 +172,25 @@ const PetCreate = ({ router }) => {
         <div className="col-md-4">
           <div>
             <div className="form-group pb-2">
-              <span style={nameStyle}>รูปภาพของสัตว์เลี้ยง / Featured image</span>
+              <span style={nameStyle}>
+                รูปภาพของสัตว์เลี้ยง / Featured image
+              </span>
               <hr />
-              <small className="text-muted" style={{ marginLeft: '20px' }}>
+              <small className="text-muted" style={{marginLeft: '20px'}}>
                 Max size: 1mb
               </small>
               <br />
-              <label className="btn btn-outline-info" style={{ marginTop: '8px', marginLeft: '20px' }}>
+              <label
+                className="btn btn-outline-info"
+                style={{marginTop: '8px', marginLeft: '20px'}}
+              >
                 Profile photo
-                <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
+                <input
+                  onChange={handleChange('photo')}
+                  type="file"
+                  accept="image/*"
+                  hidden
+                />
               </label>
             </div>
           </div>
@@ -165,8 +201,14 @@ const PetCreate = ({ router }) => {
           </div>
           <div>
             <span style={nameStyle}>เพศ / Gender</span>
-            <select value={gender} onChange={handleChange('gender')} style={genderStyle}>
-              <option value="ไม่ระบุ / Not specified">ไม่ระบุ / Not specified</option>
+            <select
+              value={gender}
+              onChange={handleChange('gender')}
+              style={genderStyle}
+            >
+              <option value="ไม่ระบุ / Not specified">
+                ไม่ระบุ / Not specified
+              </option>
               <option value="ชาย / Male">ชาย / Male</option>
               <option value="หญิง / Female">หญิง / Female</option>
             </select>
@@ -223,6 +265,7 @@ const buttonStyle = {
   display: 'block',
   margin: '0 auto',
   marginTop: '30px',
+  marginBottom: '20px',
 };
 
 const inputCreate = {

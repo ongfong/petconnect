@@ -1,11 +1,11 @@
 import Layout from '../../components/Layout';
-import { useState, useEffect } from 'react';
-import { withRouter } from 'next/router';
-import { getCookie } from '../../actions/auth';
+import {useState, useEffect} from 'react';
+import {withRouter} from 'next/router';
+import {getCookie} from '../../actions/auth';
 import Private from '../../components/auth/Private';
-import { listPets, removePet, lost, find } from '../../actions/pet';
+import {listPets, removePet, lost, find} from '../../actions/pet';
 import moment from 'moment';
-import { API } from '../../config';
+import {API} from '../../config';
 import Link from 'next/link';
 import {
   Collapse,
@@ -17,7 +17,7 @@ import {
   Container,
 } from 'reactstrap';
 
-const ListPets = ({ pets, query }) => {
+const ListPets = ({pets, query}) => {
   const [pet, setPets] = useState([]);
   const [message, setMessage] = useState('');
   const token = getCookie('token');
@@ -217,12 +217,12 @@ const ListPets = ({ pets, query }) => {
   );
 };
 
-ListPets.getInitialProps = ({ query }) => {
+ListPets.getInitialProps = ({query}) => {
   return listPets(query.user).then((data) => {
     if (data.error) {
       console.log(data.error);
     } else {
-      return { pets: data.pets, query };
+      return {pets: data.pets, query};
     }
   });
 };
@@ -271,8 +271,7 @@ const buttonUpdateStyle = {
 
 const buttonLostStyle = {
   backgroundColor: '#FEC748',
-  marginRight: '5px',
-  marginLeft: '5px',
+  marginLeft: '10px',
   border: 'none',
   marginBottom: '15px',
 };
@@ -280,7 +279,7 @@ const buttonLostStyle = {
 const buttonFindStyle = {
   backgroundColor: '#AEC33A',
   color: '#262626',
-  marginRight: '5px',
+  marginLeft: '10px',
   border: 'none',
   marginBottom: '15px',
 };
@@ -289,6 +288,7 @@ const buttonDeleteStyle = {
   backgroundColor: '#D92139',
   border: 'none',
   marginBottom: '15px',
+  marginLeft: '10px',
 };
 
 const containerStyle = {
