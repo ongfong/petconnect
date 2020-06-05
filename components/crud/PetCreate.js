@@ -5,18 +5,6 @@ import {getCategories} from '../../actions/category';
 import {createPet} from '../../actions/pet';
 
 const PetCreate = ({router}) => {
-  // const petFromLS = () => {
-  //     if (typeof window === 'undefined') {
-  //         return false;
-  //     }
-
-  //     if (localStorage.getItem('pet')) {
-  //         return JSON.parse(localStorage.getItem('pet'));
-  //     } else {
-  //         return false;
-  //     }
-  // };
-
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]); // categories
   const [values, setValues] = useState({
@@ -27,11 +15,12 @@ const PetCreate = ({router}) => {
     id: '',
     pin: '',
     name: '',
-    gender: 'Not specified',
+    gender: '',
+    breed: '',
     hidePublishButton: false,
   });
 
-  const {error, success, formData, name, gender, id, pin} = values;
+  const {error, success, formData, name, gender, id, pin, breed} = values;
   const token = getCookie('token');
 
   useEffect(() => {
@@ -149,6 +138,27 @@ const PetCreate = ({router}) => {
               style={inputCreate}
             />
           </div>
+          <div className="form-group">
+            <label style={nameStyle}>พันธ์ุสัตว์เลี้ยง / Breed *</label>
+            <input
+              value={breed}
+              onChange={handleChange('breed')}
+              type="text"
+              className="form-control"
+              style={inputCreate}
+            />
+          </div>
+          <div>
+            <span style={nameStyle}>เพศ / Gender *</span>
+            <select
+              value={gender}
+              onChange={handleChange('gender')}
+              style={genderStyle}
+            >
+              <option value="ชาย / Male">ชาย / Male</option>
+              <option value="หญิง / Female">หญิง / Female</option>
+            </select>
+          </div>
           <button type="submit" className="btn btn-primary" style={buttonStyle}>
             Create
           </button>
@@ -199,20 +209,6 @@ const PetCreate = ({router}) => {
             <hr />
             <ul style={radioStyle}>{showCategories()}</ul>
           </div>
-          <div>
-            <span style={nameStyle}>เพศ / Gender</span>
-            <select
-              value={gender}
-              onChange={handleChange('gender')}
-              style={genderStyle}
-            >
-              <option value="ไม่ระบุ / Not specified">
-                ไม่ระบุ / Not specified
-              </option>
-              <option value="ชาย / Male">ชาย / Male</option>
-              <option value="หญิง / Female">หญิง / Female</option>
-            </select>
-          </div>
         </div>
       </div>
     </div>
@@ -220,6 +216,9 @@ const PetCreate = ({router}) => {
 };
 
 const radioStyle = {
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
+  fontSize: '18px',
   maxHeight: '200px',
   overflowY: 'scroll',
   color: 'black',
@@ -237,6 +236,8 @@ const containerStyle = {
 };
 
 const createName = {
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
   fontSize: '24px',
   fontWeight: 'bold',
   color: '#333333',
@@ -246,17 +247,21 @@ const createName = {
   display: 'block',
   paddingBottom: '54px',
   marginTop: '100px',
+  textTransform: 'uppercase',
 };
 
 const nameStyle = {
-  src: 'url(../../../fonts/BANGNA-NEW.TTF)',
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
   fontWeight: 'bold',
-  fontSize: '15px',
+  fontSize: '16px',
   textAlign: 'left',
   marginBottom: '15px',
 };
 
 const buttonStyle = {
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
   backgroundColor: 'green',
   border: 'none',
   borderRadius: '25px',
@@ -269,28 +274,43 @@ const buttonStyle = {
 };
 
 const inputCreate = {
-  fontSize: '15px',
+  // fontSize: '15px',
+  // lineHeight: '1.5',
+  // color: '#666666',
+  // display: 'block',
+  // width: '100%',
+  // background: '#e6e6e6',
+  // height: '50px',
+  // borderRadius: '25px',
+  // padding: '0 30px 0 68px',
+  // outline: 'none',
+  // border: 'none',
+  // marginBottom: '25px'
+
+  fontSize: '16px',
+  color: '#43383e',
   lineHeight: '1.5',
-  color: '#666666',
+  position: 'relative',
   display: 'block',
   width: '100%',
-  background: '#e6e6e6',
-  height: '50px',
-  borderRadius: '25px',
-  padding: '0 30px 0 68px',
+  height: '55px',
+  background: '#fff',
+  borderRadius: '31px',
+  padding: '0 35px 0 35px',
   outline: 'none',
   border: 'none',
-  marginBottom: '25px',
+  margin: '0',
 };
 
 const genderStyle = {
-  fontSize: '18px',
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
+  fontSize: '16px',
   borderRadius: '25px',
   border: 'none',
-  fontSize: '18px',
-  height: '35px',
+  height: '40px',
   width: '100%',
-  padding: '0 30px 0 68px',
+  padding: '0 30px 0 48px',
   background: '#e6e6e6',
   color: '#666666',
   marginBottom: '20px',

@@ -96,24 +96,17 @@ const ListPets = ({pets, query}) => {
         <div className="container-fluid" style={fluidStyle}>
           <div className="mb-3 card">
             <div className="no-gutters row">
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <section>
                   <img
                     className="img img-fluid"
-                    style={{
-                      height: '220px',
-                      width: '200px',
-                      marginTop: '15px',
-                      marginBottom: '15px',
-                      marginLeft: '15px',
-                      justifyContent: 'center',
-                    }}
+                    style={imgStyle}
                     src={`${API}/pets/photo/${pet.id}`}
                     alt={pet.name}
                   />
                 </section>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <div className="pb-3" style={nameStyle}>
                   ID: <strong>{pet.id}</strong>
                 </div>
@@ -228,6 +221,7 @@ ListPets.getInitialProps = ({query}) => {
 };
 
 const barStyle = {
+  fontFamily: 'Kanit',
   background: '#fff',
   border: '#dee2e6 solid 1px',
   display: 'flex',
@@ -249,20 +243,32 @@ const fluidStyle = {
   marginLeft: 'auto',
 };
 
+const imgStyle = {
+  // height: '220px',
+  height: 'auto',
+  width: '200px',
+  display: 'flex',
+  margin: '0 auto',
+  marginTop: '12px',
+  marginBottom: '12px',
+  justifyContent: 'center',
+};
+
 const nameStyle = {
+  fontFamily: 'Kanit',
   fontSize: '22px',
   marginTop: '30px',
   marginLeft: '15px',
-  src: 'url(../../../fonts/BANGNA-NEW.TTF)',
 };
 
 const nameStyle2 = {
+  fontFamily: 'Kanit',
   fontSize: '22px',
   marginLeft: '15px',
-  src: 'url(../../../fonts/BANGNA-NEW.TTF)',
 };
 
 const buttonUpdateStyle = {
+  fontFamily: 'Kanit',
   backgroundColor: '#0384BD',
   border: 'none',
   marginLeft: '10px',
@@ -270,6 +276,7 @@ const buttonUpdateStyle = {
 };
 
 const buttonLostStyle = {
+  fontFamily: 'Kanit',
   backgroundColor: '#FEC748',
   marginLeft: '10px',
   border: 'none',
@@ -277,6 +284,7 @@ const buttonLostStyle = {
 };
 
 const buttonFindStyle = {
+  fontFamily: 'Kanit',
   backgroundColor: '#AEC33A',
   color: '#262626',
   marginLeft: '10px',
@@ -285,6 +293,7 @@ const buttonFindStyle = {
 };
 
 const buttonDeleteStyle = {
+  fontFamily: 'Kanit',
   backgroundColor: '#D92139',
   border: 'none',
   marginBottom: '15px',

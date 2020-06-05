@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
-import { APP_NAME } from '../config';
-import { signout, isAuth } from '../actions/auth';
+import {APP_NAME} from '../config';
+import {signout, isAuth} from '../actions/auth';
 import {
   Collapse,
   Navbar,
@@ -10,10 +10,10 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown, 
-  DropdownToggle, 
-  DropdownMenu, 
-  DropdownItem 
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from 'reactstrap';
 
 const Header = () => {
@@ -49,18 +49,41 @@ const Header = () => {
 
             {isAuth() && isAuth().role === 0 && (
               <NavItem>
-                 {/* <Link href = {`/user/${isAuth()._id}`}>
+                {/* <Link href = {`/user/${isAuth()._id}`}>
                     <NavLink style={NavStyleRight1}>{`${isAuth().name}`}</NavLink>
                  </Link> */}
-              
+
                 <UncontrolledDropdown>
-                  <DropdownToggle tag="a" className="nav-link" caret  style={NavStyleRight1}>
+                  <DropdownToggle
+                    tag="a"
+                    className="nav-link"
+                    caret
+                    style={NavStyleRight1}
+                  >
                     {`${isAuth().name}`}
                   </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem tag="a" href={`/user/${isAuth()._id}`} style={NavStyleRight3}>My Profile</DropdownItem>
-                    <DropdownItem tag="a" href="/user/crud/pet" style={NavStyleRight3}>Create Pet</DropdownItem>
-                    <DropdownItem tag="a" href="/user/update" style={NavStyleRight3}>Update Profile</DropdownItem>
+                    <DropdownItem
+                      tag="a"
+                      href={`/user/${isAuth()._id}`}
+                      style={NavStyleRight3}
+                    >
+                      My Profile
+                    </DropdownItem>
+                    <DropdownItem
+                      tag="a"
+                      href="/user/crud/pet"
+                      style={NavStyleRight3}
+                    >
+                      Create Pet
+                    </DropdownItem>
+                    <DropdownItem
+                      tag="a"
+                      href="/user/update"
+                      style={NavStyleRight3}
+                    >
+                      Update Profile
+                    </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </NavItem>
@@ -81,70 +104,77 @@ const Header = () => {
                  </Link>
               </NavItem>
             )} */}
-          
+
             {isAuth() && isAuth().role === 1 && (
               <NavItem>
-                <Link href = "/admin">
-                  <NavLink style={NavStyleRight1} >{`${isAuth().name}`}</NavLink>
+                <Link href="/admin">
+                  <NavLink style={NavStyleRight1}>{`${isAuth().name}`}</NavLink>
                 </Link>
               </NavItem>
             )}
 
             {isAuth() && isAuth().role === 0 && (
               <NavItem>
-                <Link href = "/tag/requiretag">
+                <Link href="/tag/requiretag">
                   <NavLink style={NavStyleRight1}>Request Tag</NavLink>
                 </Link>
               </NavItem>
-            )}    
+            )}
 
             {isAuth() && (
               <NavItem>
-                <NavLink style={NavStyleRight2} onClick={() => signout(() => Router.replace(`/signin`))}>
+                <NavLink
+                  style={NavStyleRight2}
+                  onClick={() => signout(() => Router.replace(`/signin`))}
+                >
                   Signout
                 </NavLink>
               </NavItem>
-            )}  
-         </Nav>
+            )}
+          </Nav>
         </Collapse>
       </Navbar>
     </div>
   );
 };
 
-const fontName = { 
+const fontName = {
   cursor: 'pointer',
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
   fontWeight: 'bold',
   fontSize: '18px',
-  paddingLeft:'125px', 
+  paddingLeft: '125px',
   color: 'orange',
 };
 
-const NavStyleRight1 = { 
+const NavStyleRight1 = {
   cursor: 'pointer',
-  src: 'url(../../../fonts/BANGNA-NEW.TTF)',
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
   fontWeight: 'bold',
   fontSize: '18px',
   paddingRight: '50px',
-  color: 'orange'
+  color: 'orange',
 };
 
-const NavStyleRight2 = { 
+const NavStyleRight2 = {
   cursor: 'pointer',
-  src: 'url(../../../fonts/BANGNA-NEW.TTF)',
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
   fontWeight: 'bold',
   fontSize: '18px',
   paddingRight: '170px',
-  color: 'orange'
+  color: 'orange',
 };
 
 const NavStyleRight3 = {
   cursor: 'pointer',
-  src: 'url(../../../fonts/BANGNA-NEW.TTF)',
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
   fontSize: '18px',
   textAlign: 'left',
   backgroundColor: '#f8f9fa',
-
 };
 
 export default Header;

@@ -6,6 +6,7 @@ const RequireTagComponent = () => {
   const [values, setValues] = useState({
     name: '',
     email: '',
+    phone: '',
     houseNumber: '',
     village: '',
     road: '',
@@ -23,6 +24,7 @@ const RequireTagComponent = () => {
   const {
     name,
     email,
+    phone,
     houseNumber,
     village,
     road,
@@ -44,6 +46,7 @@ const RequireTagComponent = () => {
     const tag = {
       name,
       email,
+      phone,
       houseNumber,
       village,
       road,
@@ -62,6 +65,7 @@ const RequireTagComponent = () => {
           ...values,
           name: '',
           email: '',
+          phone: '',
           houseNumber: '',
           village: '',
           road: '',
@@ -110,10 +114,10 @@ const RequireTagComponent = () => {
           {showError()}
           {showLoading()}
 
-          <p>
+          <p style={pStyle}>
             <strong>ข้อมูลการจัดส่ง / Delivery information</strong>
           </p>
-          <p>
+          <p style={pStyle}>
             <strong>ผู้รับสินค้า / Consignee</strong>
           </p>
 
@@ -134,13 +138,24 @@ const RequireTagComponent = () => {
               onChange={handleChange('email')}
               type="email"
               className="form-control"
-              placeholder="อีเมล์ / email"
+              placeholder="อีเมล / e-mail"
+              style={inputRequest}
+            />
+          </div>
+
+          <div className="form-group">
+            <input
+              value={phone}
+              onChange={handleChange('phone')}
+              type="text"
+              className="form-control"
+              placeholder="เบอร์โทรศัพท์ / phone"
               style={inputRequest}
             />
           </div>
 
           <div>
-            <p>
+            <p style={pStyle}>
               <strong>ที่อยู่การจัดส่ง / Delivery address</strong>
             </p>
             <div className="row">
@@ -222,75 +237,61 @@ const RequireTagComponent = () => {
               />
             </div>
 
-            <div className="col-md-4">
-              <p>
+            <div className="container">
+              <p style={pStyle}>
                 <strong>รูปแบบของแท็ก / Style of tag</strong>
               </p>
-              <label style={{marginLeft: '50px'}}>
-                <input type="radio" value="style1" name="styleTag" />
-                Style 1
-              </label>
-              <br />
-              <label style={{marginLeft: '50px'}}>
-                <input type="radio" value="style2" name="styleTag" />
-                Style 2
-              </label>
-              <br />
-              <label style={{marginLeft: '50px'}}>
-                <input type="radio" value="style3" name="styleTag" />
-                Style 3
-              </label>
-            </div>
-
-            <div
-              className="row"
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                margin: '0 auto',
-              }}
-            >
-              <div className="col-md-3">
-                <p style={{margin: '20px 80px'}}>"Style1"</p>
-                <img
-                  src="https://sv1.picz.in.th/images/2020/05/28/qc7oaR.jpg"
-                  alt="Style1"
-                  border="0"
-                  style={{
-                    maxWidth: '160px',
-                    maxHeight: '160px',
-                    marginTop: '10px',
-                    marginLeft: '35px',
-                  }}
-                />
-              </div>
-              <div className="col-md-3">
-                <p style={{margin: '20px 80px'}}>"Style2"</p>
-                <img
-                  src="https://sv1.picz.in.th/images/2020/05/28/qc7Pxu.jpg"
-                  alt="Style2"
-                  border="0"
-                  style={{
-                    maxWidth: '150px',
-                    maxHeight: '150px',
-                    marginTop: '10px',
-                    marginLeft: '35px',
-                  }}
-                />
-              </div>
-              <div className="col-md-3">
-                <p style={{margin: '20px 80px'}}>"Style3"</p>
-                <img
-                  src="https://sv1.picz.in.th/images/2020/05/28/qc7CWI.jpg"
-                  alt="Style3"
-                  border="0"
-                  style={{
-                    maxWidth: '160px',
-                    maxHeight: '160px',
-                    marginTop: '10px',
-                    marginLeft: '35px',
-                  }}
-                />
+              <div className="row" style={{justifyContent: 'center'}}>
+                <div className="col-md-6">
+                  <label style={pStyle}>
+                    <input type="radio" name="styleTag" style={tagStyle} />{' '}
+                    Style 1
+                  </label>
+                  <br />
+                  <label style={pStyle2}> มีแค่ QRCode</label>
+                  <img
+                    src="https://sv1.picz.in.th/images/2020/05/28/qc7Pxu.jpg"
+                    alt="Style1"
+                    border="0"
+                    style={{
+                      maxWidth: '130px',
+                      maxHeight: '130px',
+                      display: 'flex',
+                      margin: '0 auto',
+                      marginBottom: '10px',
+                    }}
+                  />
+                </div>
+                <div className="col-md-6">
+                  <label style={pStyle}>
+                    <input type="radio" name="styleTag" style={tagStyle} />{' '}
+                    Style 2
+                  </label>
+                  <br />
+                  <label style={pStyle2}> มีเบอร์โทรเจ้าของ</label>
+                  <img
+                    src="https://sv1.picz.in.th/images/2020/05/28/qc7oaR.jpg"
+                    alt="Style2"
+                    border="0"
+                    style={{
+                      maxWidth: '160px',
+                      maxHeight: '160px',
+                      display: 'flex',
+                      margin: '0 auto',
+                      marginBottom: '10px',
+                    }}
+                  />
+                </div>
+                {/* <div className="col-md-4">
+                    <label style={pStyle}><input type="radio" name="styleTag" style={tagStyle}/> Style 3</label>
+                    <label style={pStyle2}> มีชื่อ และ เบอร์โทรเจ้าของ</label>
+                      <img 
+                        src="https://sv1.picz.in.th/images/2020/05/28/qc7CWI.jpg" 
+                        alt="Style3" 
+                        border="0"
+                        style={{maxWidth: '185px', maxHeight: '185px', display: 'flex', margin: '0 auto'}} 
+                      />
+                   </div> */}
               </div>
             </div>
           </div>
@@ -322,12 +323,15 @@ const containerRequestTag = {
   justifyContent: 'center',
   alignItems: 'center',
   background: '#f2f2f2',
+  // background: '#e6e6e6',
   marginTop: '50px',
   top: '0',
   left: '0',
 };
 
 const requestTagName = {
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
   fontSize: '24px',
   fontWeight: 'bold',
   color: '#333333',
@@ -336,25 +340,67 @@ const requestTagName = {
   textTransform: 'uppercase',
   width: '100%',
   display: 'block',
-  paddingBottom: '54px',
+  paddingBottom: '50px',
   marginTop: '50px',
 };
 
+const pStyle = {
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
+  cursor: 'pointer',
+  fontSize: '16px',
+};
+
+const pStyle2 = {
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
+  fontSize: '16px',
+  marginLeft: '70px',
+};
+
+const tagStyle = {
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
+  cursor: 'pointer',
+  marginLeft: '50px',
+};
+
 const inputRequest = {
-  fontSize: '15px',
+  // fontFamily: 'Kanit',
+  // fontSize: '15px',
+  // lineHeight: '1.5',
+  // color: '#666666',
+  // display: 'block',
+  // width: '100%',
+  // background: 'rgba(109,124,144,.1)',
+  // // background: 'white',
+  // height: '50px',
+  // borderRadius: '25px',
+  // padding: '0 30px 0 68px',
+  // marginTop: '18px',
+  // outline: 'none',
+  // border: 'none'
+
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
+  fontSize: '16px',
+  color: '#43383e',
   lineHeight: '1.5',
-  color: '#666666',
+  position: 'relative',
   display: 'block',
   width: '100%',
-  background: '#e6e6e6',
-  height: '50px',
-  borderRadius: '25px',
-  padding: '0 30px 0 68px',
-  marginTop: '20px',
+  height: '55px',
+  background: '#fff',
+  borderRadius: '31px',
+  padding: '0 35px 0 35px',
   outline: 'none',
   border: 'none',
+  margin: '0',
 };
+
 const buttonStyle = {
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
   width: '40%',
   display: 'block',
   backgroundColor: 'green',

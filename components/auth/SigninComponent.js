@@ -59,8 +59,8 @@ const SigninComponent = () => {
     return (
       <div
         className="container-login"
-        style={containerLogin}
         onSubmit={handleSubmit}
+        style={containerLogin}
       >
         <form className="col-md-5 offset-md-0">
           <span className="login-form-title" style={loginName}>
@@ -144,7 +144,9 @@ const containerLogin = {
 };
 
 const loginName = {
-  fontSize: '24px',
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
+  fontSize: '30px',
   fontWeight: 'bold',
   color: '#333333',
   lineHeight: '1.2',
@@ -156,8 +158,9 @@ const loginName = {
 };
 
 const inputSignIn = {
-  src: 'url(../../../fonts/BANGNA-NEW.TTF)',
-  fontSize: '15px',
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
+  fontSize: '17px',
   lineHeight: '1.5',
   color: '#666666',
   display: 'block',
@@ -172,6 +175,8 @@ const inputSignIn = {
 };
 
 const buttonStyle = {
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
   backgroundColor: 'green',
   marginTop: '20px',
   border: 'none',
@@ -181,6 +186,8 @@ const buttonStyle = {
 };
 
 const forgotStyle = {
+  fontFamily: 'Kanit',
+  src: '../../fonts/Kanit-Regular.ttf',
   marginTop: '20px',
   alignItems: 'right',
 };

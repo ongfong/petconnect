@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import Layout from '../../../components/Layout';
-import { forgotPassword } from '../../../actions/auth';
+import {forgotPassword} from '../../../actions/auth';
 
 const ForgotPassword = () => {
   const [values, setValues] = useState({
@@ -10,31 +10,46 @@ const ForgotPassword = () => {
     showForm: true,
   });
 
-  const { email, message, error, showForm } = values;
+  const {email, message, error, showForm} = values;
 
   const handleChange = (name) => (e) => {
-    setValues({ ...values, message: '', error: '', [name]: e.target.value });
+    setValues({...values, message: '', error: '', [name]: e.target.value});
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setValues({ ...values, message: '', error: '' });
-    forgotPassword({ email }).then((data) => {
+    setValues({...values, message: '', error: ''});
+    forgotPassword({email}).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error });
+        setValues({...values, error: data.error});
       } else {
-        setValues({ ...values, message: data.message, email: '', showForm: false });
+        setValues({
+          ...values,
+          message: data.message,
+          email: '',
+          showForm: false,
+        });
       }
     });
   };
 
-  const showError = () => (error ? <div className="alert alert-danger">{error}</div> : '');
-  const showMessage = () => (message ? <div className="alert alert-success">{message}</div> : '');
+  const showError = () =>
+    error ? <div className="alert alert-danger">{error}</div> : '';
+  const showMessage = () =>
+    message ? <div className="alert alert-success">{message}</div> : '';
 
   const passwordForgotForm = () => (
     <form onSubmit={handleSubmit}>
       <div className="form-group pt-5">
-        <input type="email" onChange={handleChange('email')} className="form-control" value={email} placeholder="Enter your email address" required style={inputForgot} />
+        <input
+          type="email"
+          onChange={handleChange('email')}
+          className="form-control"
+          value={email}
+          placeholder="Enter your email address"
+          required
+          style={inputForgot}
+        />
       </div>
       <div>
         <button className="btn btn-primary" style={buttonForgot}>
@@ -70,6 +85,8 @@ const containerForgot = {
 };
 
 const forgotStyle = {
+  fontFamily: 'Kanit',
+  src: '../../../../fonts/Kanit-Regular.ttf',
   fontWeight: 'bold',
   textAlign: 'center',
   paddingTop: '50px',
@@ -77,6 +94,8 @@ const forgotStyle = {
 };
 
 const inputForgot = {
+  fontFamily: 'Kanit',
+  src: '../../../../fonts/Kanit-Regular.ttf',
   fontSize: '15px',
   lineHeight: '1.5',
   color: '#666666',
@@ -92,6 +111,8 @@ const inputForgot = {
 };
 
 const buttonForgot = {
+  fontFamily: 'Kanit',
+  src: '../../../../fonts/Kanit-Regular.ttf',
   height: '50px',
   backgroundColor: 'blue',
   border: 'none',
@@ -100,4 +121,5 @@ const buttonForgot = {
   display: 'block',
   backgroundColor: '#0384BD',
 };
+
 export default ForgotPassword;

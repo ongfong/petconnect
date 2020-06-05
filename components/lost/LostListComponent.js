@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
-import { listLostPets } from '../../actions/pet';
+import {listLostPets} from '../../actions/pet';
 import moment from 'moment';
-import { API } from '../../config';
+import {API} from '../../config';
 
 const LostListComponent = () => {
   const [pets, setPets] = useState([]);
@@ -43,11 +43,22 @@ const LostListComponent = () => {
 
     return pets.map((pet, i) => {
       return (
-        <div className="col-md-4" key={i} style={{ marginBottom: '20px' }}>
-          <div className="card fixed-width" style={{ width: '18rem' }}>
-            <img className="card-img-top" style={imgStyle} src={`${API}/pets/photo/${pet.id}`} alt={pet.name} />
+        <div
+          className="col-md-4"
+          key={i}
+          style={{fontFamily: 'Kanit', marginBottom: '20px'}}
+        >
+          <div className="card fixed-width" style={{width: '18rem'}}>
+            <img
+              className="card-img-top"
+              style={imgStyle}
+              src={`${API}/pets/photo/${pet.id}`}
+              alt={pet.name}
+            />
             <div className="card-body">
-              <h4 style={{ color: '#FC7139' }}>ID: {pet.id}</h4>
+              <h4 style={{fontFamily: 'Kanit', color: '#FC7139'}}>
+                ID: {pet.id}
+              </h4>
               <p className="card-text">
                 Category: <strong>{pet.categories[0].name}</strong>
               </p>
@@ -60,7 +71,8 @@ const LostListComponent = () => {
               <p className="card-text">
                 Gender: <strong>{pet.gender}</strong>
               </p>
-              Post by <strong>{pet.postedBy.name} </strong> | Lost on <strong>{moment(pet.updatedAt).fromNow()}</strong>
+              Post by <strong>{pet.postedBy.name} </strong> <br />| Lost on{' '}
+              <strong>{moment(pet.updatedAt).fromNow()}</strong>
             </div>
           </div>
         </div>
@@ -70,7 +82,16 @@ const LostListComponent = () => {
   return (
     <React.Fragment>
       <div className="container">
-        <h2 style={{ textAlign: 'center', padding: '20px', color: '#FC7139' }}>Lost Pets!</h2>
+        <h2
+          style={{
+            fontFamily: 'Kanit',
+            textAlign: 'center',
+            padding: '20px',
+            color: '#FC7139',
+          }}
+        >
+          Lost Pets!
+        </h2>
         {/* <hr style={{width: '80%'}} /> */}
         <div className="row">{showAllLostPets()}</div>
       </div>

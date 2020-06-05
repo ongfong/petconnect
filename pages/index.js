@@ -2,13 +2,15 @@ import Layout from '../components/Layout';
 import LostListComponent from '../components/lost/LostListComponent';
 import Carousel from '../components/UI/Carousel/Carousel';
 import Cards from '../components/UI/Card/Card';
-import { View, MaterialIcons } from 'reactstrap';
+import {View, MaterialIcons} from 'reactstrap';
 const Index = () => {
   return (
     <Layout>
       <Carousel />
       <div className="policy" style={policyStyle}>
-        <h4 style={{ textAlign: 'center' }}>" We love my pets and we know important of pets to pet owner "</h4>
+        <h4 style={{textAlign: 'center'}}>
+          " We love my pets and we know important of pets to pet owner "
+        </h4>
       </div>
       {/* <Cards /> */}
       {/* <div class="row">
@@ -58,12 +60,18 @@ const Index = () => {
               </div>
             </div> */}
 
-      <div className="container-fluid" style={{ backgroundColor: '#f2f2f2', paddingBottom: '20px' }}>
+      <div
+        className="container-fluid"
+        style={{backgroundColor: '#f2f2f2', paddingBottom: '20px'}}
+      >
         <section className="item-category-area section-gap">
           <div className="container">
             <div className="row d-flex justify-content-center">
               <div className="col-md-12 pb-80 header-text text-center">
-                <h1 className="pb-10" style={{ paddingTop: '50px', paddingBottom: '50px' }}>
+                <h1
+                  className="pb-10"
+                  style={{paddingTop: '50px', paddingBottom: '50px'}}
+                >
                   HOW TO
                 </h1>
               </div>
@@ -71,38 +79,69 @@ const Index = () => {
             <div className="row">
               <div className="col-lg-3 col-md-6">
                 <div className="single-cat-item" style={itemStyle}>
-                  <img className="img-fluid" src="https://images.pexels.com/photos/667228/pexels-photo-667228.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" style={imgHowtoStyle} />
+                  <img
+                    className="img-fluid"
+                    src="https://images.pexels.com/photos/667228/pexels-photo-667228.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                    style={imgHowtoStyle}
+                  />
                   <h4 style={h4Style}>Request Tag</h4>
                   <p style={pHowtoStyle}>1. Click Request Tag.</p>
-                  <p style={pHowtoStyle}>2. fill information is name, email address.</p>
-                  <p style={pHowtoStyle}>3. Pet-Connect will send tag for you.</p>
+                  <p style={pHowtoStyle}>
+                    2. fill information is name, email address.
+                  </p>
+                  <p style={pHowtoStyle}>
+                    3. Pet-Connect will send tag for you.
+                  </p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="single-cat-item">
-                  <img className="img-fluid" src="https://images.pexels.com/photos/936317/pexels-photo-936317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style={imgHowtoStyle} />
+                  <img
+                    className="img-fluid"
+                    src="https://images.pexels.com/photos/936317/pexels-photo-936317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    style={imgHowtoStyle}
+                  />
                   <h4 style={h4Style}>Register Tag</h4>
                   <p style={pHowtoStyle}>1. Click Create Pet.</p>
-                  <p style={pHowtoStyle}>2. Add information by ID and Pin get from Email.</p>
-                  <p style={pHowtoStyle}>3. Your pet created by pet owner can inform when lost, find and delete.</p>
+                  <p style={pHowtoStyle}>
+                    2. Add information by ID and Pin get from Email.
+                  </p>
+                  <p style={pHowtoStyle}>
+                    3. Your pet created by pet owner can inform when lost, find
+                    and delete.
+                  </p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="single-cat-item">
-                  <img className="img-fluid" src="https://images.pexels.com/photos/582070/pexels-photo-582070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style={imgHowtoStyle} />
+                  <img
+                    className="img-fluid"
+                    src="https://images.pexels.com/photos/582070/pexels-photo-582070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    style={imgHowtoStyle}
+                  />
                   <h4 style={h4Style}>Update Profile</h4>
                   <p style={pHowtoStyle}>1. Click Update Profile.</p>
-                  <p style={pHowtoStyle}>2. Fill information that want to edit profile.</p>
-                  <p style={pHowtoStyle}>3. Click submit then information was updated.</p>
+                  <p style={pHowtoStyle}>
+                    2. Fill information that want to edit profile.
+                  </p>
+                  <p style={pHowtoStyle}>
+                    3. Click submit then information was updated.
+                  </p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="single-cat-item">
                   <div className="thumb">
-                    <img className="img-fluid" src="https://images.pexels.com/photos/4203280/pexels-photo-4203280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style={imgHowtoStyle} />
+                    <img
+                      className="img-fluid"
+                      src="https://images.pexels.com/photos/4203280/pexels-photo-4203280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                      style={imgHowtoStyle}
+                    />
                   </div>
                   <h4 style={h4Style}>Inform when found pet lost</h4>
-                  <p style={pHowtoStyle}>1. Scan QR Code that attached to the collar.</p>
+                  <p style={pHowtoStyle}>
+                    1. Scan QR Code that attached to the collar.
+                  </p>
                   <p style={pHowtoStyle}>2. See information of pet lost..</p>
                   <p style={pHowtoStyle}>Thank you for help pet :D</p>
                 </div>
@@ -117,15 +156,24 @@ const Index = () => {
         <ul style={ulStyle}>
           <li style={linkStyle}>
             <h2 style={h2Style}>Find your pet</h2>
-            <p style={pStyle}>Find your pet when pet lost owner can inform then home page of Pet-Connect will display.</p>
+            <p style={pStyle}>
+              Find your pet when pet lost owner can inform then home page of
+              Pet-Connect will display.
+            </p>
           </li>
           <li style={linkStyle}>
             <h2 style={h2Style}>Request tag</h2>
-            <p style={pStyle}>Request Tag for use tag to keep information of pet, inform when pet lost.</p>
+            <p style={pStyle}>
+              Request Tag for use tag to keep information of pet, inform when
+              pet lost.
+            </p>
           </li>
           <li style={linkStyle}>
             <h2 style={h2Style}>Pet was found</h2>
-            <p style={pStyle}>When people found pet lost, you will recieve notification at email.</p>
+            <p style={pStyle}>
+              When people found pet lost, you will recieve notification at
+              email.
+            </p>
           </li>
         </ul>
       </section>
@@ -168,20 +216,27 @@ const imgHowtoStyle = {
   height: 'auto',
   verticalAlign: 'middle',
   borderStyle: 'none',
+  marginTop: '10px',
 };
 
 const h4Style = {
+  fontFamily: 'Kanit',
+  src: '../fonts/Kanit-Regular.ttf',
   fontSize: '20px',
   textAlign: 'center',
   paddingTop: '15px',
 };
 
 const pHowtoStyle = {
+  fontFamily: 'Kanit',
+  src: '../fonts/Kanit-Regular.ttf',
   fontSize: '17px',
 };
 
 //policy
 const policyStyle = {
+  fontFamily: 'Kanit',
+  src: '../fonts/Kanit-Regular.ttf',
   border: '2px solid orange',
   borderRadius: '.625em',
   padding: '1em',
@@ -190,12 +245,13 @@ const policyStyle = {
   width: '80%',
   maxWidth: '1075px',
   margin: '3em auto 1em',
-  webkitTransition: 'font-size .5s',
   transition: 'font-size .5s',
   marginBottom: '50px',
 };
 
 const fontStyle = {
+  fontFamily: 'Kanit',
+  src: '../fonts/Kanit-Regular.ttf',
   fontSize: '16px',
   fontWeight: 'bold',
   letterSpacing: '.1px',
@@ -207,6 +263,8 @@ const fontStyle = {
 };
 
 const sectionStyle = {
+  fontFamily: 'Kanit',
+  src: '../fonts/Kanit-Regular.ttf',
   // padding: '10px 35px 35px',
   textAlign: 'center',
   display: 'block',
@@ -225,6 +283,8 @@ const ulStyle = {
 };
 
 const titleStyle = {
+  fontFamily: 'Kanit',
+  src: '../fonts/Kanit-Regular.ttf',
   fontSize: '36px',
   fontWeight: 'bold',
   letterSpacing: '.1px',
@@ -235,6 +295,8 @@ const titleStyle = {
 };
 
 const h2Style = {
+  fontFamily: 'Kanit',
+  src: '../fonts/Kanit-Regular.ttf',
   fontWeight: 'bold',
   fontSize: '26px',
   letterSpacing: '.1px',
@@ -246,6 +308,8 @@ const h2Style = {
 };
 
 const pStyle = {
+  fontFamily: 'Kanit',
+  src: '../fonts/Kanit-Regular.ttf',
   color: '#000',
   fontSize: '20px',
   textAlign: 'Center',
@@ -261,6 +325,8 @@ const linkStyle = {
 };
 
 const lostStyle2 = {
+  fontFamily: 'Kanit',
+  src: '../fonts/Kanit-Regular.ttf',
   fontWeight: 'bold',
   textAlign: 'center',
 };
