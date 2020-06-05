@@ -22,3 +22,6 @@ module.exports = withCSS({
 
 # Installing
 npm run dev
+
+# Authors
+ Puangporn Kowsamruang
