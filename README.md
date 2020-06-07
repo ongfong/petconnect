@@ -24,4 +24,5 @@ module.exports = withCSS({
 npm run dev
 
 # Authors
- Puangporn Kowsamruang
+  Puangporn Kowsamruang,
+ Theeranun Tongprasong
