@@ -58,17 +58,15 @@ class Map extends Component {
   }
 }
 const getLoStyle = {
-  fontFamily: 'Kanit',
-  src: '../../fonts/Kanit-Regular.ttf',
-  // backgroundColor: 'gray',
-  // border: 'none',
-  borderRadius: '10px',
-  height: '35px',
-  width: '200px',
-  display: 'flex',
-  justifyContent: 'center',
-  margin: '0 auto',
-  marginTop: '1rem',
-  marginBottom: '20px',
+  display: 'inline-block',
+  backgroundColor: '#188b31',
+  color: '#fff',
+  padding: '0.4rem 1.3rem',
+  fontSize: '1rem',
+  border: 'none',
+  marginRight: '0.5rem',
+  outline: 'none',
+  boxShadow: '0 1px 0 rgba(0, 0, 0, 0.45)',
+  borderRadius: '5px',
 };
 export default Map;

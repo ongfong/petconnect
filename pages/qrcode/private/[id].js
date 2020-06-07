@@ -36,8 +36,12 @@ const Private = ({pet}) => {
 
   return (
     <Layout>
-      <h2 style={h2Style}>ช่วยนำสัตว์ไปส่งที่สถานีตำรวจ ขอบคุณค่ะ/ครับ</h2>
-      <Contact email={email} />
+      <div style={h2Style}>
+        <h2>ช่วยนำสัตว์ไปส่งที่สถานีตำรวจ ขอบคุณค่ะ/ครับ</h2>
+        <div style={containner}>
+          <Contact email={email} />
+        </div>
+      </div>
     </Layout>
   );
 };
@@ -56,12 +60,18 @@ const h2Style = {
   fontWeight: 'bold',
   fontSize: '40px',
   width: '100%',
-  minHeight: '80vh',
+  minHeight: '100vh',
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'center',
   alignItems: 'center',
   background: 'linear-gradient(-135deg, rgb(255, 217, 84), rgb(242, 171, 57))',
+};
+
+const containner = {
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '2rem',
 };
 
 export default Private;

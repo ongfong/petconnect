@@ -4,18 +4,8 @@ import {withRouter} from 'next/router';
 import {getCookie} from '../../actions/auth';
 import Private from '../../components/auth/Private';
 import {listPets, removePet, lost, find} from '../../actions/pet';
-import moment from 'moment';
 import {API} from '../../config';
 import Link from 'next/link';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-} from 'reactstrap';
 
 const ListPets = ({pets, query}) => {
   const [pet, setPets] = useState([]);
@@ -113,6 +103,10 @@ const ListPets = ({pets, query}) => {
                 <div className="pb-3" style={nameStyle2}>
                   Name: <strong>{pet.name}</strong>
                 </div>
+                <div className="pb-3" style={nameStyle2}>
+                  Status: <strong style={{color: 'red'}}>{pet.lost}</strong>
+                </div>
+
                 <Link href={`/pet/${pet.id}`}>
                   <button
                     type="submit"
@@ -134,7 +128,7 @@ const ListPets = ({pets, query}) => {
                   style={buttonFindStyle}
                   onClick={() => findConfirm(pet.id)}
                 >
-                  Find
+                  Found
                 </button>
                 <button
                   className="btn btn-danger btn-md"

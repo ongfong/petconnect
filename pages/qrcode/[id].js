@@ -105,7 +105,9 @@ const SinglePet = ({pet, router}) => {
             <div className="col-md-8 mb-5">{profilePetQrForm()}</div>
           </div>
         </div>
-        <Contact email={email} />
+        <div style={{textAlign: 'center'}}>
+          <Contact email={email} />
+        </div>
       </Layout>
     </React.Fragment>
   );
