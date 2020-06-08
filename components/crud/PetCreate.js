@@ -148,17 +148,6 @@ const PetCreate = ({router}) => {
               style={inputCreate}
             />
           </div>
-          <div>
-            <span style={nameStyle}>เพศ / Gender *</span>
-            <select
-              value={gender}
-              onChange={handleChange('gender')}
-              style={genderStyle}
-            >
-              <option value="ชาย / Male">ชาย / Male</option>
-              <option value="หญิง / Female">หญิง / Female</option>
-            </select>
-          </div>
           <button type="submit" className="btn btn-primary" style={buttonStyle}>
             Create
           </button>
@@ -208,6 +197,17 @@ const PetCreate = ({router}) => {
             <span style={nameStyle}>ประเภทสัตว์เลี้ยง / Categories *</span>
             <hr />
             <ul style={radioStyle}>{showCategories()}</ul>
+          </div>
+          <div>
+            <span style={nameStyle}>เพศ / Gender *</span>
+            <select
+              value={gender}
+              onChange={handleChange('gender')}
+              style={genderStyle}
+            >
+              <option value="ชาย / Male">ชาย / Male</option>
+              <option value="หญิง / Female">หญิง / Female</option>
+            </select>
           </div>
         </div>
       </div>
