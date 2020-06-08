@@ -105,7 +105,13 @@ const SinglePet = ({pet, router}) => {
             <div className="col-md-8 mb-5">{profilePetQrForm()}</div>
           </div>
         </div>
-        <div style={{textAlign: 'center'}}>
+        <div
+          style={{
+            textAlign: 'center',
+            background: '#f2f2f2',
+            minHeight: '20vh',
+          }}
+        >
           <Contact email={email} />
         </div>
       </Layout>

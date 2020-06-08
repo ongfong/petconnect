@@ -57,6 +57,7 @@ Private.getInitialProps = ({query}) => {
 };
 
 const h2Style = {
+  fontFamily: 'Kanit',
   fontWeight: 'bold',
   fontSize: '40px',
   width: '100%',
@@ -65,7 +66,7 @@ const h2Style = {
   flexWrap: 'wrap',
   justifyContent: 'center',
   alignItems: 'center',
-  background: 'linear-gradient(-135deg, rgb(255, 217, 84), rgb(242, 171, 57))',
+  background: '#f2f2f2',
 };
 
 const containner = {
