@@ -15,7 +15,7 @@ module.exports = withCSS({
     DOMAIN_PRODUCTION: 'https://petconnect.com',
     GOOGLE_MAP_API: 'you google map api',
     GOOGLE_CLIENT_ID:
-      'you google client ID',
+      'your google client ID',
   },
 });
 ```
