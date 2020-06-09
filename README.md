@@ -2,6 +2,7 @@
 React Node NextJS Frontend
 # Prerequisites
 - You should create node_modules file before Install.
+    - npm install
 - You should have next.config.js file and add these in you next.config.js file
 ```
 const withCSS = require('@zeit/next-css');
