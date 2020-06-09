@@ -13,7 +13,7 @@ module.exports = withCSS({
     PRODUCTION: false,
     DOMAIN_DEVELOPMENT: 'http://localhost:3000',
     DOMAIN_PRODUCTION: 'https://petconnect.com',
-    GOOGLE_MAP_API: 'you google map api',
+    GOOGLE_MAP_API: 'your google map api',
     GOOGLE_CLIENT_ID:
       'your google client ID',
   },
